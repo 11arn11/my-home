@@ -16,7 +16,7 @@ import moment from 'moment'
 
 import GiornoListItem from './GiornoListItem'
 
-const store = require('../../../store');
+const store = require('../../store');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,9 +39,7 @@ export default () => {
 
   const skipPastMeal = (pasti) => {
     const nowDateString = moment().format("YYYY-MM-DD")
-    console.log('nowDateString', nowDateString)
     for (const giorno in pasti){
-      console.log('giorno', giorno)
       if (nowDateString === giorno) {
         return giorno;
       }
