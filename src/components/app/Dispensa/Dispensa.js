@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Giorno from './Giorno'
+import { Element , scroller } from 'react-scroll'
 
-const store = require('../../store');
+import moment from 'moment'
+
+import GiornoListItem from './GiornoListItem'
+
+const store = require('../../../store');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,8 +33,35 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
+
   const classes = useStyles();
   const pasti = store.pasti;
+
+  const skipPastMeal = (pasti) => {
+    const nowDateString = moment().format("YYYY-MM-DD")
+    console.log('nowDateString', nowDateString)
+    for (const giorno in pasti){
+      console.log('giorno', giorno)
+      if (nowDateString === giorno) {
+        return giorno;
+      }
+    if (nowDateString < giorno) {
+        return giorno;
+      }
+    }
+  }
+
+  useEffect(() => {
+    const skipTo = skipPastMeal(pasti);
+    console.log('skipPastMeal', skipTo);
+    scroller.scrollTo(skipTo, {
+      duration: 1800,
+      delay: 900,
+      containerId: 'listaDispensa',
+      smooth: 'easeInOutQuart'
+    })
+  });
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -45,15 +75,21 @@ export default () => {
         </Toolbar>
       </AppBar>
       <List 
+        id="listaDispensa"
         className={classes.lista} 
         subheader={<li />}
       >
         {Object.keys(pasti).map(giorno => (
-          <Giorno
-            data={giorno}
-            pranzo={pasti[giorno].pranzo}
-            cena={pasti[giorno].cena}
-          /> 
+          <Element
+            key={giorno}
+            name={giorno}
+          >
+            <GiornoListItem
+              data={giorno}
+              pranzo={pasti[giorno].pranzo}
+              cena={pasti[giorno].cena}
+            />
+          </Element>
         ))}
       </List>
     </div>
