@@ -16,7 +16,8 @@ import moment from 'moment'
 
 import GiornoListItem from './GiornoListItem'
 
-const store = require('../../store');
+import store from '../../store';
+const model = require('../../model');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 export default () => {
 
   const classes = useStyles();
-  const pasti = store.pasti;
+  const pasti = store.programmazione;
 
   const skipPastMeal = (pasti) => {
     const nowDateString = moment().format("YYYY-MM-DD")
@@ -51,7 +52,6 @@ export default () => {
 
   useEffect(() => {
     const skipTo = skipPastMeal(pasti);
-    console.log('skipPastMeal', skipTo);
     scroller.scrollTo(skipTo, {
       duration: 1800,
       delay: 900,
@@ -64,11 +64,16 @@ export default () => {
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton 
+            edge="start" 
+            className={classes.menuButton} 
+            color="inherit" 
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Pasti
+            Menu della settimana
           </Typography>
         </Toolbar>
       </AppBar>
@@ -77,18 +82,20 @@ export default () => {
         className={classes.lista} 
         subheader={<li />}
       >
-        {Object.keys(pasti).map(giorno => (
-          <Element
-            key={giorno}
-            name={giorno}
-          >
-            <GiornoListItem
-              data={giorno}
-              pranzo={pasti[giorno].pranzo}
-              cena={pasti[giorno].cena}
-            />
-          </Element>
-        ))}
+        {Object.keys(pasti).map(giorno => {
+          return (
+            <Element
+              key={giorno}
+              name={giorno}
+            >
+              <GiornoListItem
+                data={giorno}
+                pranzo={model.getPastoProgrammato(giorno,'pranzo')}
+                cena={model.getPastoProgrammato(giorno,'cena')}
+              />
+            </Element>
+          )
+        })}
       </List>
     </div>
   );

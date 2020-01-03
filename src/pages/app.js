@@ -6,7 +6,7 @@ export default () => {
   return (
       <Router>
         <Programmazione path="/app/" />
-        <Programmazione path="/app/programmazione/" />
+        <Programmazione path="/app/programmazione/x" />
       </Router>
   )
 }
