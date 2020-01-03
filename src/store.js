@@ -1,57 +1,66 @@
 module.exports = {
+    dispensa: {
+        'pesce_spada':315,
+        'pasta': 700,
+        'melanzana': 1400,
+        'pomodoro': 1000,
+        'tonno': 500,
+        'porro': 300,
+        'mozzarella': 200,
+        'cipolla': 400,
+        'aglio': 30
+    },
     pasti: {
         1: {
             'main': 'Pesce spada',
             'secondary' : 'pasta, melanzane e pomodori',
             'ingredients': {
-                'pesce_spada': '300 g',
-                'pasta': '125 g',
-                'melanze': '1 pezzo',
-                'pomodoro': '500 g',
+                'pesce_spada': 300,
+                'pasta': 125,
+                'melanzana': 300,
+                'pomodoro': 500,
             }
         },
         2: {
             'main': 'Tonno',
             'secondary' : 'pasta e porri',
             'ingredients': {
-                'tonno': '300 g',
-                'pasta': '125 g',
-                'porro': '1 pezzo',
+                'tonno': 300,
+                'pasta': 125,
+                'porro': 150,
             }
         },
         3: {
             'main': 'Mozzarella',
             'secondary': 'Pane, insalata, pomodori, cipolla',
             'ingredients': {
-                'mozzarella': '200 g',
-                'pane': '125 g',
-                'pomodoro': '500 g',
-                'cipolla': '1 pezzo',
+                'mozzarella': 200,
+                'pane': 125,
+                'pomodoro': 500,
+                'cipolla': 100,
             }
         },
         4: {
             'main': 'Pollo',
             'secondary': 'Riso, cipolla, curry',
             'ingredients': {
-                'pollo': '250 g',
-                'riso': '125 g',
-                'cipolla': '1 pezzo',
+                'pollo': 250,
+                'riso': 125,
+                'cipolla': 100,
             }
         },
         5: {
             'main': 'Zucca',
             'secondary': 'Riso, cipolla, farina di cocco, curry, curcuma, pepe, aglio',
             'ingredients': {
-                'zucca': '500 g',
-                'riso': '125 g',
-                'cipolla': '1 pezzo',
-                'farina_cocco': '2 cucchiai',
-                'curry': '2 cucchiai',
-                'curcuma': '.5 cucchiaini',
-                'pepe': '1 pezzo',
-                'aglio': '1 pezzo',
-
-                
+                'zucca': 500,
+                'riso': 125,
+                'cipolla': 100,
+                'farina_cocco': 1,
+                'curry': 1,
+                'curcuma': 1,
+                'pepe': 1,
+                'aglio': 3,
             }
         },
         6: {},

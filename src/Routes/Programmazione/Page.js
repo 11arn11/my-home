@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -15,6 +15,7 @@ import { Element , scroller } from 'react-scroll'
 import moment from 'moment'
 
 import GiornoListItem from './GiornoListItem'
+import IngredientiMancanti from './IngredientiMancanti'
 
 import store from '../../store';
 const model = require('../../model');
@@ -34,22 +35,31 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
-
-  const classes = useStyles();
-  const pasti = store.programmazione;
-
+  const classes = useStyles()
+  const pasti = store.programmazione
+  const [open, setOpen] = useState(false)
+  const [missingDialog, setMissingDialog] = useState()
+  const handleClick = (e, id) => {
+    alert('handleClick (' + id + ')')
+  };
+  const handleClickMissing = (e, missing) => {
+    setOpen(true)
+    setMissingDialog(missing)
+  };
+  const handleCloseMissing = () => {
+    setOpen(false)
+  };
   const skipPastMeal = (pasti) => {
     const nowDateString = moment().format("YYYY-MM-DD")
     for (const giorno in pasti){
       if (nowDateString === giorno) {
-        return giorno;
+        return giorno
       }
     if (nowDateString < giorno) {
-        return giorno;
+        return giorno
       }
     }
   }
-
   useEffect(() => {
     const skipTo = skipPastMeal(pasti);
     scroller.scrollTo(skipTo, {
@@ -59,7 +69,6 @@ export default () => {
       smooth: 'easeInOutQuart'
     })
   });
-
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
@@ -92,11 +101,18 @@ export default () => {
                 data={giorno}
                 pranzo={model.getPastoProgrammato(giorno,'pranzo')}
                 cena={model.getPastoProgrammato(giorno,'cena')}
+                handleClick={handleClick}
+                handleClickMissing={handleClickMissing}
               />
             </Element>
           )
         })}
       </List>
+      <IngredientiMancanti 
+        open={open} 
+        onClose={handleCloseMissing}
+        missing={missingDialog}
+      />
     </div>
   );
 

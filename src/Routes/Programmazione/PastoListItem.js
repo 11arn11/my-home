@@ -20,10 +20,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({main, secondary, status}) => {
+export default ({id, main, secondary, status, missing, handleClick, handleClickMissing}) => {
     const classes = useStyles();
     return (
-        <ListItem className={classes.ListItem}>
+        <ListItem 
+            button 
+            className={classes.ListItem}
+            onClick={e => handleClick(e, id)}
+        >
             <ListItemAvatar>
                 <Avatar>
                     <FastfoodIcon />
@@ -34,9 +38,16 @@ export default ({main, secondary, status}) => {
                 secondary={secondary}
             />
             <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                    {status ? <Done /> : <ShoppingCart/>}
-                </IconButton>
+                {status
+                    ? 
+                        <IconButton edge="end">
+                            <Done />
+                        </IconButton>
+                    :   
+                        <IconButton edge="end" onClick={e => handleClickMissing(e, missing)}>
+                            <ShoppingCart/>
+                        </IconButton>
+                }
             </ListItemSecondaryAction>
         </ListItem>
     )

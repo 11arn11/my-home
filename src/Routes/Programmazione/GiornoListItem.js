@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({data, pranzo, cena}) => {
+export default ({data, pranzo, cena, handleClick, handleClickMissing}) => {
     const classes = useStyles();
     const formatDate = (data) => {
         return moment(data).locale('ll').format("dddd (DD MMMM)")
@@ -36,16 +36,24 @@ export default ({data, pranzo, cena}) => {
                 <ListItem>
                     <List className={classes.List}>
                         <PastoListItem
+                            id={pranzo.id}
                             main={pranzo.main} 
                             secondary={pranzo.secondary} 
+                            missing={pranzo.missing}
                             status={pranzo.status}
+                            handleClick={handleClick}
+                            handleClickMissing={handleClickMissing}
                             key={`item-${data}-pranzo`}
                             name={`item-${data}-pranzo`}
                         />
                         <PastoListItem 
+                            id={pranzo.id}
                             main={cena.main} 
                             secondary={cena.secondary} 
+                            missing={cena.missing}
                             status={cena.status}
+                            handleClick={handleClick}
+                            handleClickMissing={handleClickMissing}
                             key={`item-${data}-cena`}
                             name={`item-${data}-cena`}
                         />
