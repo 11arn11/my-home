@@ -13,9 +13,8 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     top: 56,
-    position: 'fixed',
-    overflow: 'auto',
-    maxHeight: 600,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
   }
 }));
 

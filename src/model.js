@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 const store = require('./store')
 
 module.exports = {
@@ -41,6 +43,17 @@ module.exports = {
             status: status,
             missing: missing
         }
-    }
-
+    },
+    getProssimoPastoProgrammato: () => {
+        const nowDateString = moment().format("YYYY-MM-DD")
+        for (const giorno in store.programmazione){
+          if (nowDateString === giorno) {
+            return giorno
+          }
+        if (nowDateString < giorno) {
+            return giorno
+          }
+        }
+      }
+    
 }

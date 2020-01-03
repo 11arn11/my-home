@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Element , scroller, Events } from 'react-scroll'
-import moment from 'moment'
+import { Element , scroller } from 'react-scroll'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -16,7 +15,10 @@ import model from '../../model'
 
 const useStyles = makeStyles(theme => ({
   List: {
+    backgroundColor: theme.palette.background.paper,
     position: 'relative',
+    overflow: 'auto',
+    maxHeight: 600,
   }
 }));
 
@@ -35,23 +37,8 @@ export default () => {
   const handleCloseMissing = () => {
     setOpen(false)
   };
-  const skipPastMeal = (pasti) => {
-    const nowDateString = moment().format("YYYY-MM-DD")
-    for (const giorno in pasti){
-      if (nowDateString === giorno) {
-        return giorno
-      }
-    if (nowDateString < giorno) {
-        return giorno
-      }
-    }
-  }
   useEffect(() => {
-    const skipTo = skipPastMeal(pasti);
-
-    Events.scrollEvent.register('begin', function(to, element) { console.log("begin", arguments); });
-    Events.scrollEvent.register('end', function(to, element) { console.log("end", arguments); });
-
+    const skipTo = model.getProssimoPastoProgrammato();
     scroller.scrollTo(skipTo, {
       duration: 1800,
       delay: 900,
