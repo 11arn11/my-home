@@ -1,4 +1,12 @@
 module.exports = {
+    ingredienti: {
+        'pesce_spada':{
+            'name': 'Pesce spada'
+        },
+        'farina_cocco':{
+            'name': 'Farina di cocco'
+        },
+    },
     dispensa: {
         'pesce_spada':315,
         'pasta': 700,

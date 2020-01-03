@@ -1,36 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { Element , scroller, Events } from 'react-scroll'
+import moment from 'moment'
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
+import List from '@material-ui/core/List'
 
-import MenuIcon from '@material-ui/icons/Menu';
-
-import { Element , scroller } from 'react-scroll'
-
-import moment from 'moment'
+import Layout from '../../components/Layout'
 
 import GiornoListItem from './GiornoListItem'
 import IngredientiMancanti from './IngredientiMancanti'
 
-import store from '../../store';
-const model = require('../../model');
+import store from '../../store'
+import model from '../../model'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  lista: {
-    top: 56,
-    overflow: 'auto',
-    maxHeight: 600,
+  List: {
+    position: 'relative',
   }
 }));
 
@@ -62,6 +48,10 @@ export default () => {
   }
   useEffect(() => {
     const skipTo = skipPastMeal(pasti);
+
+    Events.scrollEvent.register('begin', function(to, element) { console.log("begin", arguments); });
+    Events.scrollEvent.register('end', function(to, element) { console.log("end", arguments); });
+
     scroller.scrollTo(skipTo, {
       duration: 1800,
       delay: 900,
@@ -70,25 +60,12 @@ export default () => {
     })
   });
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <IconButton 
-            edge="start" 
-            className={classes.menuButton} 
-            color="inherit" 
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Menu della settimana
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <Layout
+      title="Menu della settimana"
+    >
       <List 
         id="listaDispensa"
-        className={classes.lista} 
+        className={classes.List} 
         subheader={<li />}
       >
         {Object.keys(pasti).map(giorno => {
@@ -113,7 +90,6 @@ export default () => {
         onClose={handleCloseMissing}
         missing={missingDialog}
       />
-    </div>
+    </Layout>
   );
-
 }

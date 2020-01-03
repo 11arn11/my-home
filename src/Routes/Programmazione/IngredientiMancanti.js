@@ -15,7 +15,10 @@ export default ({ open, onClose, missing }) => {
           <List>
             {Object.keys(missing).map(ingredient => (
               <ListItem key={ingredient}>
-                <ListItemText primary={ingredient} secondary={missing[ingredient]} />
+                <ListItemText 
+                  primary={missing[ingredient].name} 
+                  secondary={`${missing[ingredient].qta} g`}
+                />
               </ListItem>
             ))}
           </List>
