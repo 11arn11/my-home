@@ -10,7 +10,6 @@ import Layout from '../../components/Layout'
 import GiornoListItem from './GiornoListItem'
 import IngredientiMancanti from './IngredientiMancanti'
 
-import store from '../../store'
 import model from '../../model'
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
   const classes = useStyles()
-  const pasti = store.programmazione
   const [open, setOpen] = useState(false)
   const [missingDialog, setMissingDialog] = useState()
   const handleClick = (e, id) => {
@@ -55,7 +53,7 @@ export default () => {
         className={classes.List} 
         subheader={<li />}
       >
-        {Object.keys(pasti).map(giorno => {
+        {Object.keys(model.getProgrammazione()).map(giorno => {
           return (
             <Element
               key={giorno}

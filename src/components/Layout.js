@@ -2,7 +2,7 @@ import React from "react"
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import Header from "./header"
+import Header from "./Header"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,13 +22,13 @@ export default ({children, title}) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-        <Header
-            title={title}
-            classes={classes}
-        />
-        <main className={classes.content}>
-          {children}
-        </main>
+      <Header
+          title={title}
+          classes={classes}
+      />
+      <main className={classes.content}>
+        {children}
+      </main>
     </div>
   )
 }

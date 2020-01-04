@@ -13,6 +13,9 @@ module.exports = {
     getPasto: (id) => {
         return store.pasti[id]
     },
+    getProgrammazione: () => {
+        return store.programmazione
+    },
     getPastoProgrammato: (giorno, nome_del_pasto) => {
         const pasto_programmato = store.programmazione[giorno][nome_del_pasto]
         const pasto = module.exports.getPasto(pasto_programmato.id_pasto)
