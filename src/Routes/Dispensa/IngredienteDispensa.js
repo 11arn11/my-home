@@ -31,14 +31,14 @@ export default ({
                     justify="center"
                 >
                     <Grid item xs={12}>
-                        { editMode 
+                        { !editMode 
                         ?
                             <TextField required
-                                label="ingrediente"
                                 fullWidth={true}
+                                label="Nome ingrediente"
+                                onChange={e => setName(e.target.value)}
                                 helperText="inserisci il nome dell'ingrediente"
                                 value={name}
-                                onChange={e => setName(e.target.value)}
                             />
                         : <DialogContentText>{name}</DialogContentText>
                         }

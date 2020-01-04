@@ -56,21 +56,25 @@ export default () => {
 
     // Popup ingredienti
     const [open, setOpen] = useState(false)
+    const [editMode, setEditMode] = useState(false)
     const [dialogName, setDialogName] = useState()
     const [dialogQta, setDialogQta] = useState()
     const handleSave = () => {
         setDialogName()
         setDialogQta()
+        setEditMode(false)
         setOpen(false)
     }
     const handleAdd = () => {
         setDialogName()
         setDialogQta()
+        setEditMode(false)
         setOpen(true)
     }
     const handleEdit = (ingredientId) => {
         setDialogName(model.getIngrediente(ingredientId).name)
         setDialogQta(model.getIngredienteDispensa(ingredientId))
+        setEditMode(true)
         setOpen(true)
     }
 
@@ -108,11 +112,12 @@ export default () => {
             </Fab>
             <IngredienteDispensa 
                 open={open} 
-                onClose={e => setOpen(false)}
+                editMode={editMode} 
                 name={dialogName}
                 qta={dialogQta}
                 setName={setDialogName}
                 setQta={setDialogQta}
+                onClose={e => setOpen(false)}
                 handleSave={handleSave}
             />
         </Page>
