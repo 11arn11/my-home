@@ -8,6 +8,7 @@ module.exports = {
         },
     },
     dispensa: {
+        'pesce_spada': 0,
         'radicchio': 0,
         'scalogno': 0,
         'branzino': 0,

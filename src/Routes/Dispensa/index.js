@@ -7,6 +7,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField'
 
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
 import Page from '../../components/Page'
 
 import IngredienteDispensa from './IngredienteDispensa'
@@ -21,6 +24,16 @@ const useStyles = makeStyles(theme => ({
       position: 'relative',
       overflow: 'auto',
       maxHeight: 600,
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    fabButton: {
+        position: 'absolute',
+        zIndex: 1,
+        top: 530,
+        right: 10,
+        margin: '0 auto',
     }
 }));
 
@@ -41,10 +54,25 @@ export default () => {
         setSearchResults(results);
     }, [searchTerm]);
 
-    // Popup modifica ingredienti
-    const [editingIngredient, setEditingIngredient] = useState()
-    const handleEdit = (ingredientId) => setEditingIngredient(ingredientId)
-    const handleClose = () => setEditingIngredient()
+    // Popup ingredienti
+    const [open, setOpen] = useState(false)
+    const [dialogName, setDialogName] = useState()
+    const [dialogQta, setDialogQta] = useState()
+    const handleSave = () => {
+        setDialogName()
+        setDialogQta()
+        setOpen(false)
+    }
+    const handleAdd = () => {
+        setDialogName()
+        setDialogQta()
+        setOpen(true)
+    }
+    const handleEdit = (ingredientId) => {
+        setDialogName(model.getIngrediente(ingredientId).name)
+        setDialogQta(model.getIngredienteDispensa(ingredientId))
+        setOpen(true)
+    }
 
     return (
         <Page title="Dispensa">
@@ -70,10 +98,23 @@ export default () => {
                     )}
                 )}
             </List>
+            <Fab
+                color="primary" 
+                aria-label="add" 
+                className={classes.fabButton}
+                onClick={e => handleAdd()}
+            >
+                <AddIcon />
+            </Fab>
+            <div className={classes.grow} />
             <IngredienteDispensa 
-                open={!!editingIngredient} 
-                onClose={handleClose}
-                editingIngredient={editingIngredient}
+                open={open} 
+                onClose={e => setOpen(false)}
+                name={dialogName}
+                qta={dialogQta}
+                setName={setDialogName}
+                setQta={setDialogQta}
+                handleSave={handleSave}
             />
         </Page>
     )
