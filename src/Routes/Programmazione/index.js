@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
   List: {
     position: 'relative',
     overflow: 'auto',
-    maxHeight: 600,
+    height : 'calc(100vh - 70px)',
+    maxHeight: 'calc(100vh - 70px)',
   }
 }));
 

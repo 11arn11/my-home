@@ -11,10 +11,16 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  content: {
-    top: 56,
+  Header: {
     position: 'relative',
-    backgroundColor: theme.palette.background.paper,
+    top: 0,
+  },
+  main: {
+    position: 'relative',
+    top: 56,
+    height : 'calc(100vh - 70px)',
+    maxHeight: 'calc(100vh - 70px)',
+    backgroundColor: theme.palette.background.lime,
   }
 }));
 
@@ -24,9 +30,10 @@ export default ({children, title}) => {
     <div className={classes.root}>
       <Header
           title={title}
+          className={classes.Header}
           classes={classes}
       />
-      <main className={classes.content}>
+      <main className={classes.main}>
         {children}
       </main>
     </div>

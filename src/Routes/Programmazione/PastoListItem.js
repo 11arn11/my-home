@@ -15,6 +15,9 @@ import Done from '@material-ui/icons/Done';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles(theme => ({
+    ListItem: {
+        backgroundColor: theme.palette.background.lime,
+    },
     ul: {
         padding: 0,
     }

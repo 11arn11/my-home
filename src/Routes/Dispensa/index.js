@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     List: {
       position: 'relative',
       overflow: 'auto',
-      maxHeight: 600,
+      height : 'calc(100vh - 151px)',
     },
     grow: {
         flexGrow: 1,
@@ -31,8 +31,8 @@ const useStyles = makeStyles(theme => ({
     fabButton: {
         position: 'absolute',
         zIndex: 1,
-        top: 530,
-        right: 10,
+        bottom : 20,
+        right: 5,
         margin: '0 auto',
     }
 }));
@@ -106,7 +106,6 @@ export default () => {
             >
                 <AddIcon />
             </Fab>
-            <div className={classes.grow} />
             <IngredienteDispensa 
                 open={open} 
                 onClose={e => setOpen(false)}
