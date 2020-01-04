@@ -1,7 +1,7 @@
 import React from "react"
 import { Router } from "@reach/router"
-import Programmazione from "../Routes/Programmazione/Page"
-import Dispensa from "../Routes/Dispensa/Page"
+import Programmazione from "../Routes/Programmazione"
+import Dispensa from "../Routes/Dispensa"
 
 export default () => {
   return (

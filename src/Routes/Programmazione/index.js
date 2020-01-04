@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import List from '@material-ui/core/List'
 
-import Layout from '../../components/Layout'
+import Page from '../../components/Page'
 
 import GiornoListItem from './GiornoListItem'
 import IngredientiMancanti from './IngredientiMancanti'
@@ -14,7 +14,6 @@ import model from '../../model'
 
 const useStyles = makeStyles(theme => ({
   List: {
-    backgroundColor: theme.palette.background.paper,
     position: 'relative',
     overflow: 'auto',
     maxHeight: 600,
@@ -45,7 +44,7 @@ export default () => {
     })
   });
   return (
-    <Layout
+    <Page
       title="Menu della settimana"
     >
       <List 
@@ -75,6 +74,6 @@ export default () => {
         onClose={handleCloseMissing}
         missing={missingDialog}
       />
-    </Layout>
+    </Page>
   );
 }

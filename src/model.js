@@ -4,17 +4,21 @@ const store = require('./store')
 
 module.exports = {
 
+    getDispensa: () => {
+        return store.dispensa
+    },
+    getProgrammazione: () => {
+        return store.programmazione
+    },
+
     getIngrediente: (name) => {
         return store.ingredienti[name] || { name: name }
     },
-    getAlimento: (name) => {
+    getIngredienteDispensa: (name) => {
         return store.dispensa[name] || 0
     },
     getPasto: (id) => {
         return store.pasti[id]
-    },
-    getProgrammazione: () => {
-        return store.programmazione
     },
     getPastoProgrammato: (giorno, nome_del_pasto) => {
         const pasto_programmato = store.programmazione[giorno][nome_del_pasto]
@@ -24,7 +28,7 @@ module.exports = {
         const missing = {}
         for (const ingredient in pasto.ingredients) {
             const qta_richiesta = pasto.ingredients[ingredient]
-            const qta_disponibile = module.exports.getAlimento(ingredient)
+            const qta_disponibile = module.exports.getIngredienteDispensa(ingredient)
             if (qta_disponibile < qta_richiesta) {
                 missing[ingredient] = {
                     name: module.exports.getIngrediente(ingredient).name,
