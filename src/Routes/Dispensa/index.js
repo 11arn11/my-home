@@ -36,7 +36,7 @@ export default () => {
         const results = dispensa.filter(ingrediente => {
             const id = ingrediente[0]
             const name = model.getIngrediente(id).name
-            return name.toLowerCase().includes(searchTerm)
+            return name.toLowerCase().includes(searchTerm.toLowerCase())
         });
         setSearchResults(results);
     }, [searchTerm]);
