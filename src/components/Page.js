@@ -7,20 +7,23 @@ import Header from "./Header"
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    height: '99%',
+    maxHeight: '99%',
+    minHeight: '99%',
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   Header: {
-    position: 'relative',
+    position: 'fixed',
     top: 0,
+    height: '9%'
   },
   main: {
-    position: 'relative',
-    top: 56,
-    height : 'calc(100vh - 70px)',
-    maxHeight: 'calc(100vh - 70px)',
-    backgroundColor: theme.palette.background.lime,
+    position: 'fixed',
+    top: '8%',
+    height: '92%',
+    width: '100%',
   }
 }));
 
@@ -36,6 +39,7 @@ export default ({children, title}) => {
       <main className={classes.main}>
         {children}
       </main>
+      <footer>fine</footer>
     </div>
   )
 }
