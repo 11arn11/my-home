@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         zIndex: 1,
         bottom : 20,
-        right: 5,
+        right: 15,
         margin: '0 auto',
     }
 }));
