@@ -8,7 +8,7 @@ export default () => {
   return (
       <Router>
         <Programmazione path="/app/" />
-        <Programmazione path="/app/programmazione/" />
+        <Programmazione path="/app/menu-della-settimana/" />
         <Dispensa path="/app/dispensa/" />
         <ListaSpesa path="/app/lista-della-spesa/" />
       </Router>
