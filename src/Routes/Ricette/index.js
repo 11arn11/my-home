@@ -40,7 +40,7 @@ export default () => {
     const classes = useStyles()
 
     // Filtro Ricerca ingredienti
-    const items = Object.entries(model.getPasti())
+    const items = Object.entries(model.getRicette())
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     useEffect(() => {

@@ -11,7 +11,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import Avatar from '@material-ui/core/Avatar';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
-import Done from '@material-ui/icons/Done';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles(theme => ({

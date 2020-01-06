@@ -31,7 +31,7 @@ module.exports = {
         'cipolla': 400,
         'aglio': 30
     },
-    pasti: {
+    ricette: {
         1: {
             'main': 'Pesce spada',
             'secondary' : 'pasta, melanzane e pomodori',
@@ -83,9 +83,7 @@ module.exports = {
                 'pepe': 1,
                 'aglio': 3,
             }
-        },
-        6: {},
-        7: {},
+        }
     },
     programmazione: {
         '2019-12-28': {

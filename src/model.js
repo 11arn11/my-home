@@ -4,8 +4,8 @@ const store = require('./store')
 
 module.exports = {
 
-    getPasti: ()=>{
-        return store.pasti
+    getRicette: ()=>{
+        return store.ricette
     },
     getListaSpesa: () => {
         return store.listaSpesa
@@ -23,7 +23,7 @@ module.exports = {
         return store.dispensa[name] || 0
     },
     getPasto: (id) => {
-        return store.pasti[id]
+        return store.ricette[id]
     },
     getMenuSettimana: (begin, length = 21) => {
         const start = moment().subtract(7, 'd');

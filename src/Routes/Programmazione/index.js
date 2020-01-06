@@ -9,6 +9,7 @@ import Page from '../../components/Page'
 
 import GiornoListItem from './GiornoListItem'
 import IngredientiMancanti from './IngredientiMancanti'
+import CercaRicetta from './CercaRicetta'
 
 import model from '../../model'
 
@@ -23,13 +24,26 @@ const useStyles = makeStyles(theme => ({
 export default () => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
+  const [openCercaRicetta, setOpenCercaRicetta] = useState(false)
   const [missingDialog, setMissingDialog] = useState()
+
+  // Vai a ricetta
   const handleClick = (e, id) => {
     alert('handleClick (' + id + ')')
   }
+
+  // Cerca ricetta
   const handleClickAdd = () => {
-    alert('handleClickAdd')
+    setOpenCercaRicetta(true)
   }
+  const handleSelectRicetta = () => {
+    setOpenCercaRicetta(false)
+  }
+  const handleCloseCercaRicetta = () => {
+    setOpenCercaRicetta(false)
+  }
+
+  // Vedi Ingredienti Mancanti
   const handleClickMissing = (e, missing) => {
     setOpen(true)
     setMissingDialog(missing)
@@ -77,6 +91,12 @@ export default () => {
         open={open} 
         onClose={handleCloseMissing}
         missing={missingDialog}
+      />
+      <CercaRicetta
+        open={openCercaRicetta} 
+        onClose={handleCloseCercaRicetta}
+        onSelect={handleSelectRicetta}
+        ricette={model.getRicette()}
       />
     </Page>
   );

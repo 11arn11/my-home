@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 
 import ControlPointIcon from '@material-ui/icons/ControlPoint';
-import { amber } from '@material-ui/core/colors';
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
