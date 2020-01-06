@@ -9,6 +9,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import moment from 'moment'
 
 import PastoListItem from './PastoListItem'
+import EmptyListItem from './EmptyListItem'
 
 const useStyles = makeStyles(theme => ({
     ul: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({data, pranzo, cena, handleClick, handleClickMissing}) => {
+export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMissing}) => {
     const classes = useStyles();
     const formatDate = (data) => {
         return moment(data).locale('ll').format("dddd (DD MMMM)")
@@ -35,28 +36,44 @@ export default ({data, pranzo, cena, handleClick, handleClickMissing}) => {
                 </ListSubheader>
                 <ListItem>
                     <List className={classes.List}>
-                        <PastoListItem
-                            id={pranzo.id}
-                            main={pranzo.main} 
-                            secondary={pranzo.secondary} 
-                            missing={pranzo.missing}
-                            status={pranzo.status}
-                            handleClick={handleClick}
-                            handleClickMissing={handleClickMissing}
-                            key={`item-${data}-pranzo`}
-                            name={`item-${data}-pranzo`}
-                        />
-                        <PastoListItem 
-                            id={pranzo.id}
-                            main={cena.main} 
-                            secondary={cena.secondary} 
-                            missing={cena.missing}
-                            status={cena.status}
-                            handleClick={handleClick}
-                            handleClickMissing={handleClickMissing}
-                            key={`item-${data}-cena`}
-                            name={`item-${data}-cena`}
-                        />
+                        {
+                            pranzo 
+                            ? 
+                                <PastoListItem
+                                    id={pranzo.id}
+                                    main={pranzo.main} 
+                                    secondary={pranzo.secondary} 
+                                    missing={pranzo.missing}
+                                    status={pranzo.status}
+                                    handleClick={handleClick}
+                                    handleClickMissing={handleClickMissing}
+                                    key={`item-${data}-pranzo`}
+                                    name={`item-${data}-pranzo`}
+                                />
+                            : 
+                                <EmptyListItem 
+                                    handleClickAdd={handleClickAdd}
+                                />
+                        }
+                        {
+                            pranzo
+                            ? 
+                                <PastoListItem 
+                                    id={pranzo.id}
+                                    main={cena.main} 
+                                    secondary={cena.secondary} 
+                                    missing={cena.missing}
+                                    status={cena.status}
+                                    handleClick={handleClick}
+                                    handleClickMissing={handleClickMissing}
+                                    key={`item-${data}-cena`}
+                                    name={`item-${data}-cena`}
+                                />
+                            : 
+                                <EmptyListItem 
+                                    handleClickAdd={handleClickAdd}
+                                />
+                        }
                     </List>
                 </ListItem>
             </ul>

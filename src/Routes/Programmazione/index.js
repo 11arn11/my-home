@@ -26,14 +26,17 @@ export default () => {
   const [missingDialog, setMissingDialog] = useState()
   const handleClick = (e, id) => {
     alert('handleClick (' + id + ')')
-  };
+  }
+  const handleClickAdd = () => {
+    alert('handleClickAdd')
+  }
   const handleClickMissing = (e, missing) => {
     setOpen(true)
     setMissingDialog(missing)
-  };
+  }
   const handleCloseMissing = () => {
     setOpen(false)
-  };
+  }
   useEffect(() => {
     const skipTo = model.getProssimoPastoProgrammato();
     scroller.scrollTo(skipTo, {
@@ -42,7 +45,7 @@ export default () => {
       containerId: 'listaDispensa',
       smooth: 'easeInOutQuart'
     })
-  });
+  })
   return (
     <Page
       title="Menu della settimana"
@@ -52,7 +55,7 @@ export default () => {
         className={classes.List} 
         subheader={<li />}
       >
-        {Object.keys(model.getProgrammazione()).map(giorno => {
+        {model.getMenuSettimana().map(giorno => {
           return (
             <Element
               key={giorno}
@@ -63,6 +66,7 @@ export default () => {
                 pranzo={model.getPastoProgrammato(giorno,'pranzo')}
                 cena={model.getPastoProgrammato(giorno,'cena')}
                 handleClick={handleClick}
+                handleClickAdd={handleClickAdd}
                 handleClickMissing={handleClickMissing}
               />
             </Element>

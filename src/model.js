@@ -13,7 +13,6 @@ module.exports = {
     getProgrammazione: () => {
         return store.programmazione
     },
-
     getIngrediente: (name) => {
         return store.ingredienti[name] || { name: name }
     },
@@ -23,7 +22,20 @@ module.exports = {
     getPasto: (id) => {
         return store.pasti[id]
     },
+    getMenuSettimana: (begin, length = 21) => {
+        const start = moment().subtract(7, 'd');
+        const days = []
+        for (let k=1; k<length; k++){
+            days.push(start.add(1, 'd').format("YYYY-MM-DD"))
+        }
+        return days
+    },
     getPastoProgrammato: (giorno, nome_del_pasto) => {
+
+        if (!store.programmazione[giorno] || !store.programmazione[giorno][nome_del_pasto]){
+            return null
+        }
+
         const pasto_programmato = store.programmazione[giorno][nome_del_pasto]
         const pasto = module.exports.getPasto(pasto_programmato.id_pasto)
 
