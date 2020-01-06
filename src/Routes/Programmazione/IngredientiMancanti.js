@@ -8,15 +8,19 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Dialog, DialogContent, Button, Grid } from '@material-ui/core';
 import { ListItemSecondaryAction, IconButton } from '@material-ui/core';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import KitchenIcon from '@material-ui/icons/Kitchen';
 
 const useStyles = makeStyles(theme => ({
+  content: {
+    maxHeight: '60vh'
+  },
   ListItem: {
-      maxHeight: '65vh',
-      overflow: 'auto'
+    overflow: 'auto',
+    width: 220
   },
   ul: {
-      padding: 0,
+    padding: 0,
   }
 }));
 
@@ -24,13 +28,15 @@ export default ({ open, onClose, missing }) => {
   const classes = useStyles()
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle id="simple-dialog-title">Ingredienti mancanti</DialogTitle>
+      <DialogTitle>
+        Ingredienti mancanti
+      </DialogTitle>
       <DialogContent>
-        <Grid container 
-            spacing={3}
-            justify="center"
+        <Grid container
+          spacing={3}
+          justify="center"
         >
-          <Grid item xs={12}>
+          <Grid item className={classes.content}>
             {missing && Object.keys(missing).length 
               ? 
                 <List className={classes.ListItem}>
@@ -42,7 +48,10 @@ export default ({ open, onClose, missing }) => {
                       />
                       <ListItemSecondaryAction>
                         <IconButton edge="end">
-                          <ShoppingCart/>
+                          <KitchenIcon/>
+                        </IconButton>
+                        <IconButton edge="end">
+                          <ShoppingCartIcon/>
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>
@@ -51,7 +60,7 @@ export default ({ open, onClose, missing }) => {
               : null 
             }
           </Grid>
-          <Grid item>
+          <Grid item className={classes.footer}>
             <Button 
               variant="contained" 
               color="primary"

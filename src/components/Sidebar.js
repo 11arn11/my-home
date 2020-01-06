@@ -11,6 +11,10 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { ListItemIcon } from '@material-ui/core';
+
+import KitchenIcon from '@material-ui/icons/Kitchen';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 const useStyles = makeStyles(theme => ({
     IconButton: {
@@ -51,12 +55,18 @@ export default () => {
                             key="Dispensa" 
                             onClick={e => navigate('/app/dispensa')}
                         >
+                            <ListItemIcon>
+                                <KitchenIcon/>
+                            </ListItemIcon>
                             <ListItemText primary="Dispensa" />
                         </ListItem>
                         <ListItem button 
                             key="Programmazione" 
                             onClick={e => navigate('/app/programmazione')}
                         >
+                            <ListItemIcon>
+                                <ScheduleIcon/>
+                            </ListItemIcon>
                             <ListItemText primary="Programmazione" />
                         </ListItem>
                     </List>
