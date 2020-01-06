@@ -43,12 +43,10 @@ export default ({id, main, secondary, status, missing, handleClick, handleClickM
             <ListItemSecondaryAction>
                 {status
                     ? 
-                        <IconButton edge="end">
-                            <Done />
-                        </IconButton>
+                        null
                     :   
                         <IconButton edge="end" onClick={e => handleClickMissing(e, missing)}>
-                            <ShoppingCart/>
+                            <ShoppingCart color="primary"/>
                         </IconButton>
                 }
             </ListItemSecondaryAction>

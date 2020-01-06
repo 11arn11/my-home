@@ -49,10 +49,10 @@ export default ({ open, onClose, missing }) => {
                       />
                       <ListItemSecondaryAction>
                         <IconButton edge="end">
-                          <KitchenIcon/>
+                          <KitchenIcon color="primary"/>
                         </IconButton>
                         <IconButton edge="end">
-                          <ShoppingCartIcon/>
+                          <ShoppingCartIcon color="primary"/>
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>
