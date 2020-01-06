@@ -4,6 +4,9 @@ const store = require('./store')
 
 module.exports = {
 
+    getListaSpesa: () => {
+        return store.listaSpesa
+    },
     getDispensa: () => {
         return store.dispensa
     },

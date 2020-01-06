@@ -1,4 +1,12 @@
 module.exports = {
+    listaSpesa: {
+        'pesce_spada': 0,
+        'radicchio': 0,
+        'scalogno': 0,
+        'branzino': 0,
+        'olive': 0,
+        'caviale': 0
+    },
     ingredienti: {
         'pesce_spada':{
             'name': 'Pesce spada'

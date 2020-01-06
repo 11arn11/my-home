@@ -15,6 +15,7 @@ import { ListItemIcon } from '@material-ui/core';
 
 import KitchenIcon from '@material-ui/icons/Kitchen';
 import ScheduleIcon from '@material-ui/icons/Schedule';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles(theme => ({
     IconButton: {
@@ -68,6 +69,15 @@ export default () => {
                                 <ScheduleIcon/>
                             </ListItemIcon>
                             <ListItemText primary="Programmazione" />
+                        </ListItem>
+                        <ListItem button 
+                            key="Lista della spesa" 
+                            onClick={e => navigate('/app/lista-della-spesa')}
+                        >
+                            <ListItemIcon>
+                                <ShoppingCartIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Lista della spesa" />
                         </ListItem>
                     </List>
                 </div>
