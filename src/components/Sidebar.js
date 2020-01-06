@@ -79,6 +79,15 @@ export default () => {
                             </ListItemIcon>
                             <ListItemText primary="Lista della spesa" />
                         </ListItem>
+                        <ListItem button 
+                            key="Ricette" 
+                            onClick={e => navigate('/app/ricette')}
+                        >
+                            <ListItemIcon>
+                                <KitchenIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Ricette" />
+                        </ListItem>
                     </List>
                 </div>
             </SwipeableDrawer>

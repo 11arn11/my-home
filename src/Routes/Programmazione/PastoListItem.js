@@ -33,7 +33,7 @@ export default ({id, main, secondary, status, missing, handleClick, handleClickM
         >
             <ListItemAvatar>
                 <Avatar>
-                    <FastfoodIcon />
+                    <FastfoodIcon color="primary"/>
                 </Avatar>
             </ListItemAvatar>
             <ListItemText

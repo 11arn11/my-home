@@ -4,6 +4,9 @@ const store = require('./store')
 
 module.exports = {
 
+    getPasti: ()=>{
+        return store.pasti
+    },
     getListaSpesa: () => {
         return store.listaSpesa
     },
