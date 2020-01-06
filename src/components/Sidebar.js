@@ -53,6 +53,15 @@ export default () => {
                 <div className={classes.list} role="presentation">
                     <List>
                         <ListItem button 
+                            key="Menu della settimana" 
+                            onClick={e => navigate('/app/menu-della-settimana')}
+                        >
+                            <ListItemIcon>
+                                <ScheduleIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Menu della settimana" />
+                        </ListItem>
+                        <ListItem button 
                             key="Dispensa" 
                             onClick={e => navigate('/app/dispensa')}
                         >
@@ -60,15 +69,6 @@ export default () => {
                                 <KitchenIcon/>
                             </ListItemIcon>
                             <ListItemText primary="Dispensa" />
-                        </ListItem>
-                        <ListItem button 
-                            key="Programmazione" 
-                            onClick={e => navigate('/app/programmazione')}
-                        >
-                            <ListItemIcon>
-                                <ScheduleIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Programmazione" />
                         </ListItem>
                         <ListItem button 
                             key="Lista della spesa" 
