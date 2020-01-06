@@ -1,5 +1,5 @@
 import React from "react"
-import SplashScreen from "../components/SplashScreen"
+import { Link } from "gatsby"
 
 export default () => 
     <>
