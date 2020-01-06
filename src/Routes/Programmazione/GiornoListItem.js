@@ -56,10 +56,10 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                                 />
                         }
                         {
-                            pranzo
+                            cena
                             ? 
                                 <PastoListItem 
-                                    id={pranzo.id}
+                                    id={cena.id}
                                     main={cena.main} 
                                     secondary={cena.secondary} 
                                     missing={cena.missing}

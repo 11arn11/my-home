@@ -197,6 +197,22 @@ module.exports = {
                 'id_pasto': 2,
                 'status' : true
             }
+        },
+        '2020-01-08': {
+            'cena': {
+                'id_pasto': 1,
+                'status' : true
+            }
+        },
+        '2020-01-09': {
+            'pranzo': {
+                'id_pasto': 1,
+                'status' : true
+            },
+            'cena': {
+                'id_pasto': 2,
+                'status' : true
+            }
         }
     }
 }
