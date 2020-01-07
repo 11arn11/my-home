@@ -61,6 +61,13 @@ export default ({ open, onClose, missing }) => {
               : null 
             }
           </Grid>
+        </Grid>
+      </DialogContent>
+      <DialogContent>
+        <Grid container
+          spacing={3}
+          justify="center"
+        >
           <Grid item className={classes.footer}>
             <Button 
               variant="contained" 
