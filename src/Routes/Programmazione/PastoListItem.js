@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({id, main, secondary, status, missing, handleClick, handleClickMissing}) => {
+export default ({id_ricetta, main, secondary, status, missing, handleClick, handleClickMissing}) => {
     const classes = useStyles();
     return (
         <ListItem 
             button 
             className={classes.ListItem}
-            onClick={e => handleClick(e, id)}
+            onClick={e => handleClick(id_ricetta)}
         >
             <ListItemAvatar>
                 <Avatar>

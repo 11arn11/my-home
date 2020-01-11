@@ -12,6 +12,7 @@ import IngredientiMancanti from './IngredientiMancanti'
 import CercaRicetta from './CercaRicetta'
 
 import model from '../../model'
+import { navigate } from 'gatsby';
 
 const useStyles = makeStyles(theme => ({
   List: {
@@ -28,9 +29,9 @@ export default () => {
   const [missingDialog, setMissingDialog] = useState()
 
   // Vai a ricetta
-  const handleClick = (e, id) => {
-    alert('handleClick (' + id + ')')
-  }
+  const handleClick = (id) => {
+    navigate(`/app/ricetta/${id}`)
+}
 
   // Cerca ricetta
   const handleClickAdd = () => {
@@ -70,6 +71,9 @@ export default () => {
         subheader={<li />}
       >
         {model.getMenuSettimana().map(giorno => {
+          const pranzo = model.getPastoProgrammato(giorno,'pranzo')
+          const cena = model.getPastoProgrammato(giorno,'cena')
+          console.log(pranzo)
           return (
             <Element
               key={giorno}
@@ -77,8 +81,8 @@ export default () => {
             >
               <GiornoListItem
                 data={giorno}
-                pranzo={model.getPastoProgrammato(giorno,'pranzo')}
-                cena={model.getPastoProgrammato(giorno,'cena')}
+                pranzo={pranzo}
+                cena={cena}
                 handleClick={handleClick}
                 handleClickAdd={handleClickAdd}
                 handleClickMissing={handleClickMissing}

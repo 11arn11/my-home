@@ -33,7 +33,6 @@ export default ({ open, onClose, ricette, onSelect }) => {
           return main.includes(searchTerm.toLowerCase()) || secondary.includes(searchTerm.toLowerCase())
       });
       setSearchResults(results);
-      console.log(results)
   }, [searchTerm]);
 
   return (

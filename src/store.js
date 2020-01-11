@@ -88,127 +88,127 @@ module.exports = {
     programmazione: {
         '2019-12-28': {
             'pranzo': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             },
         },
         '2019-12-29': {
             'pranzo': {
-                'id_pasto': 3,
+                'id_ricetta': 3,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 4,
+                'id_ricetta': 4,
                 'status' : true
             },
         },
         '2019-12-30': {
             'pranzo': {
-                'id_pasto': 5,
+                'id_ricetta': 5,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
         },
         '2019-12-31': {
             'pranzo': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 3,
+                'id_ricetta': 3,
                 'status' : true
             },
         },
         '2020-01-01': {
             'pranzo': {
-                'id_pasto': 4,
+                'id_ricetta': 4,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 5,
+                'id_ricetta': 5,
                 'status' : true
             },
         },
         '2020-01-02': {
             'pranzo': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             },
         },
         '2020-01-03': {
             'pranzo': {
-                'id_pasto': 3,
+                'id_ricetta': 3,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 4,
+                'id_ricetta': 4,
                 'status' : false
             },
         },
         '2020-01-04': {
             'pranzo': {
-                'id_pasto': 5,
+                'id_ricetta': 5,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
         },
         '2020-01-05': {
             'pranzo': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 3,
+                'id_ricetta': 3,
                 'status' : true
             },
         },
         '2020-01-06': {
             'pranzo': {
-                'id_pasto': 4,
+                'id_ricetta': 4,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 5,
+                'id_ricetta': 5,
                 'status' : true
             },
         },
         '2020-01-07': {
             'pranzo': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             }
         },
         '2020-01-08': {
             'cena': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             }
         },
         '2020-01-09': {
             'pranzo': {
-                'id_pasto': 1,
+                'id_ricetta': 1,
                 'status' : true
             },
             'cena': {
-                'id_pasto': 2,
+                'id_ricetta': 2,
                 'status' : true
             }
         }

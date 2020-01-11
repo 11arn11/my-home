@@ -9,10 +9,13 @@ import TextField from '@material-ui/core/TextField'
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 
 import Page from '../../components/Page'
 
 import model from '../../model'
+import { ListItemSecondaryAction } from '@material-ui/core';
+import { navigate } from 'gatsby';
 
 const useStyles = makeStyles(theme => ({
     TextField: {
@@ -54,10 +57,13 @@ export default () => {
     }, [searchTerm]);
 
     const handleAdd = () => {
-        alert('Aggiungi pasto')
+        alert('Aggiungi ricetta')
     }
     const handleEdit = () => {
-        alert('Modifica pasto')
+        alert('Modifica ricetta')
+    }
+    const handleView = (id) => {
+        navigate(`/app/ricetta/${id}`)
     }
 
     return (
@@ -76,9 +82,12 @@ export default () => {
                     return(
                         <ListItem button 
                             key={id}
-                            onClick={e => handleEdit(id)}
+                            onClick={e => handleView(id)}
                         >
                             <ListItemText primary={pasto.main} secondary={pasto.secondary}/>
+                            <ListItemSecondaryAction>
+                                <EditIcon onClick={handleEdit}/>
+                            </ListItemSecondaryAction>
                         </ListItem>
                     )}
                 )}

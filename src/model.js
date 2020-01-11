@@ -7,6 +7,10 @@ module.exports = {
     getRicette: ()=>{
         return store.ricette
     },
+    getRicetta: (id)=>{
+        return store.ricette[id]
+    },
+
     getListaSpesa: () => {
         return store.listaSpesa
     },
@@ -40,7 +44,7 @@ module.exports = {
         }
 
         const pasto_programmato = store.programmazione[giorno][nome_del_pasto]
-        const pasto = module.exports.getPasto(pasto_programmato.id_pasto)
+        const pasto = module.exports.getPasto(pasto_programmato.id_ricetta)
 
         let status = true
         const missing = {}
@@ -65,6 +69,7 @@ module.exports = {
 
         return {
             ...pasto,
+            id_ricetta: pasto_programmato.id_ricetta,
             status: status,
             missing: missing
         }

@@ -4,7 +4,7 @@ import Programmazione from "../Routes/Programmazione"
 import Dispensa from "../Routes/Dispensa"
 import ListaSpesa from "../Routes/ListaSpesa"
 import Ricette from '../Routes/Ricette'
-
+import Ricetta from '../Routes/Ricetta'
 
 export default () => {
   return (
@@ -14,6 +14,7 @@ export default () => {
         <Dispensa path="/app/dispensa/" />
         <ListaSpesa path="/app/lista-della-spesa/" />
         <Ricette path="/app/ricette"/>
+        <Ricetta path="/app/ricetta/:id"/>
       </Router>
   )
 }

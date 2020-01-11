@@ -40,7 +40,7 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                             pranzo 
                             ? 
                                 <PastoListItem
-                                    id={pranzo.id}
+                                    id_ricetta={pranzo.id_ricetta}
                                     main={pranzo.main} 
                                     secondary={pranzo.secondary} 
                                     missing={pranzo.missing}
@@ -59,7 +59,7 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                             cena
                             ? 
                                 <PastoListItem 
-                                    id={cena.id}
+                                    id_ricetta={cena.id_ricetta}
                                     main={cena.main} 
                                     secondary={cena.secondary} 
                                     missing={cena.missing}
