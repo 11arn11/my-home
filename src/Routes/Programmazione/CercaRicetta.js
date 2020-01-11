@@ -6,41 +6,48 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Dialog, DialogContent, Button, Grid } from '@material-ui/core';
+import { TextField, Dialog, DialogContent, Button, Grid } from '@material-ui/core';
 import { ListItemSecondaryAction, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles(theme => ({
-  content: {
-    maxHeight: '60vh'
-  },
-  ListItem: {
-    position: 'relative',
-    overflow: 'auto',
-    width: 220,
-    height : 'calc(100vh - 156px)',
-  },
-  ul: {
-    padding: 0,
-  }
 }));
 
 export default ({ open, onClose, ricette, onSelect }) => {
   const classes = useStyles()
+  const setSearchTerm = () => {}
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
         Cerca Ricetta
       </DialogTitle>
+
       <DialogContent>
         <Grid container
           spacing={3}
           justify="center"
         >
-          <Grid item className={classes.content}>
+          <Grid item>
+            <TextField 
+                label="ingrediente" 
+                type="search" 
+                fullWidth={true}
+                helperText="cerca ingrediente"
+                onChange={e => setSearchTerm(e.target.value)}
+              />
+          </Grid>
+        </Grid>
+      </DialogContent>
+
+      <DialogContent>
+        <Grid container
+          spacing={3}
+          justify="center"
+        >
+          <Grid item>
             {ricette && Object.keys(ricette).length 
               ? 
-                <List className={classes.ListItem}>
+                <List>
                   {Object.entries(ricette).map(item => { 
                     const id = item[0]
                     const ricetta = item[1]
@@ -62,8 +69,16 @@ export default ({ open, onClose, ricette, onSelect }) => {
               : null 
             }
           </Grid>
-          <Grid item className={classes.footer}>
-            <Button 
+        </Grid>
+      </DialogContent>
+
+      <DialogContent>
+        <Grid container
+          spacing={3}
+          justify="center"
+        >
+          <Grid item className={classes.content}>
+          <Button 
               variant="contained" 
               color="primary"
               onClick={onClose}
@@ -73,6 +88,7 @@ export default ({ open, onClose, ricette, onSelect }) => {
           </Grid>
         </Grid>
       </DialogContent>
+
     </Dialog>
   );
 }
