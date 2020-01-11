@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -11,11 +11,31 @@ import { ListItemSecondaryAction, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles(theme => ({
+  fullWidth: {
+    width: '100%'
+  }
 }));
 
 export default ({ open, onClose, ricette, onSelect }) => {
+
   const classes = useStyles()
-  const setSearchTerm = () => {}
+
+  const items = Object.entries(ricette)
+
+  // Filtro Ricerca ingredienti
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  useEffect(() => {
+      const results = items.filter(item => {
+          const ricetta = item[1]
+          const main = ricetta.main.toLowerCase()
+          const secondary = ricetta.secondary.toLowerCase()
+          return main.includes(searchTerm.toLowerCase()) || secondary.includes(searchTerm.toLowerCase())
+      });
+      setSearchResults(results);
+      console.log(results)
+  }, [searchTerm]);
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
@@ -27,12 +47,12 @@ export default ({ open, onClose, ricette, onSelect }) => {
           spacing={3}
           justify="center"
         >
-          <Grid item>
+          <Grid item className={classes.fullWidth}>
             <TextField 
-                label="ingrediente" 
+                label="ricetta" 
                 type="search" 
                 fullWidth={true}
-                helperText="cerca ingrediente"
+                helperText="cerca ricetta"
                 onChange={e => setSearchTerm(e.target.value)}
               />
           </Grid>
@@ -45,10 +65,10 @@ export default ({ open, onClose, ricette, onSelect }) => {
           justify="center"
         >
           <Grid item>
-            {ricette && Object.keys(ricette).length 
+            {searchResults && searchResults.length 
               ? 
                 <List>
-                  {Object.entries(ricette).map(item => { 
+                  { searchResults.map(item => { 
                     const id = item[0]
                     const ricetta = item[1]
                     return (
