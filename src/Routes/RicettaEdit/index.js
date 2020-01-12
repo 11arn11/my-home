@@ -1,43 +1,94 @@
 import React, { useState, useEffect } from 'react'
 
+import { makeStyles } from '@material-ui/core/styles';
+
+import { Grid, TextField, Button, ListItem, List, ListItemText } from '@material-ui/core'
+
 import Page from '../../components/Page'
-import { Grid, TextField, Button } from '@material-ui/core'
+
+import CercaIngrediente from './CercaIngredienti'
 
 import model from '../../model'
-import { navigate } from 'gatsby'
+
+const useStyles = makeStyles(theme => ({
+    List: {
+      position: 'relative',
+      overflow: 'auto',
+      height : 'calc(100vh - 400px)',
+    },
+}));
 
 export default ({id = null}) => {
 
+    const classes = useStyles()
+
+    const [ingredients, setIngredients] = useState([])
+
+    const [localId, setLocalId] = useState(id)
     const [name, setName] = useState()
     const [main, setMain] = useState()
     const [secondary, setSecondary] = useState()
     const [doses, setDoses] = useState()
 
+    const [open, setOpen] = useState(false)
+
+    const handleOpenIngredient = () => {
+        if (localId) {
+            setOpen(true)
+        } else {
+            save().then(() => setOpen(true))
+        }
+    }
+    const handleAddIngredient = (ingredientId) => {
+        model.addIngredienteRicetta(localId, ingredientId)
+            .then(() => model.getRicetta(localId))
+            .then((item) => init(item))
+            .then(() => setOpen(false))
+            .catch(() => alert('si è verificato un errore'))
+    }
+    const handleCloseIngredient = () => {
+        setOpen(false)
+    }
     const handleSave = () => {
-        model.saveRicetta(id, {
-            name,
-            main,
-            secondary
-        })
+        save()
         .then(() => window.history.back())
         .catch(() => alert('Si è verificato un errore'))
     }
+    const init = ({name, main, secondary, doses}) => {
+        setName(name)
+        setMain(main)
+        setSecondary(secondary)
+        setDoses(doses)
+    }
+    const save = async () => {
+        model.saveRicetta(localId, {
+            name,
+            main,
+            secondary
+        }).then(res => {
+            if (res && res.id) {
+                setLocalId(res.id)
+            }
+        })
+    }
 
     useEffect(() => {
-        if (id) {
-            model.getRicetta(id).then(item => {
-                setName(item.name)
-                setMain(item.main)
-                setSecondary(item.secondary)
-                setDoses(item.doses)
-            })
+        console.log('useEffect', localId)
+        if (localId) {
+            model.getRicetta(localId)
+                .then(item => init(item))
         }
+        model.getIngredienti()
+            .then(items => {
+                console.log(items)
+                setIngredients(items)
+            })
     }, [])
 
     return (
-        <Page title={id ? 'Modifica ricetta' : 'Aggiungi ricetta'}>
+        <Page title={localId ? 'Modifica ricetta' : 'Aggiungi ricetta'}>
             <Grid container 
-                spacing={3}
+                spacing={2}
                 justify="center"
             >
                 <Grid item xs={12}>
@@ -64,12 +115,28 @@ export default ({id = null}) => {
                         value={secondary}
                     />
                 </Grid>
-                { 
-                    doses 
-                    ? 
-                        '' 
-                    : null
-                }
+                <Grid item>
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        onClick={e => handleOpenIngredient()}
+                    >
+                        Aggiungi ingrediente
+                    </Button>
+                </Grid>
+                <Grid item xs={12} className={classes.List}>
+                    <List>
+                        { 
+                            doses 
+                            ? doses.map(({id, qty, ingredient}) => 
+                                <ListItem key={id} dense>
+                                    <ListItemText primary={ingredient.name} secondary={`${qty} g`}/>
+                                </ListItem>
+                            )
+                            : null
+                        }
+                    </List>
+                </Grid>
                 <Grid item>
                     <Button
                         variant="contained" 
@@ -80,6 +147,12 @@ export default ({id = null}) => {
                     </Button>
                 </Grid>
             </Grid>
+            <CercaIngrediente
+                open={open} 
+                onClose={handleCloseIngredient}
+                onAddIngredient={handleAddIngredient}
+                ingredients={ingredients}
+             />
         </Page>
     )
 }

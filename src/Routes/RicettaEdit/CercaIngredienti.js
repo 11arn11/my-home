@@ -2,14 +2,15 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { Dialog, DialogContent, Button, Grid } from '@material-ui/core';
-import { ListItemSecondaryAction, IconButton } from '@material-ui/core';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import KitchenIcon from '@material-ui/icons/Kitchen';
+import { 
+  Dialog, DialogTitle, DialogContent, 
+  Button, 
+  Grid, 
+  List, ListItemText, ListItem, ListItemSecondaryAction, 
+  IconButton 
+} from '@material-ui/core';
+
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -25,34 +26,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ open, onClose, missing }) => {
+export default ({ open, onClose, onAddIngredient, ingredients }) => {
+
   const classes = useStyles()
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>
-        Ingredienti mancanti
+        Cerca ingredienti
       </DialogTitle>
       <DialogContent>
         <Grid container
           spacing={3}
           justify="center"
         >
-          <Grid item className={classes.content}>
-            {missing && Object.keys(missing).length 
+          <Grid item>
+          {ingredients
               ? 
                 <List className={classes.ListItem}>
-                  {Object.keys(missing).map(ingredient => (
-                    <ListItem key={ingredient}>
-                      <ListItemText 
-                        primary={missing[ingredient].name} 
-                        secondary={`${missing[ingredient].qta} g`}
+                  {ingredients.map(ingredient => (
+                    <ListItem key={ingredient.id}>
+                      <ListItemText
+                        primary={ingredient.name} 
                       />
                       <ListItemSecondaryAction>
                         <IconButton edge="end">
-                          <KitchenIcon color="primary"/>
-                        </IconButton>
-                        <IconButton edge="end">
-                          <ShoppingCartIcon color="primary"/>
+                          <AddIcon color="primary" onClick={e => onAddIngredient(ingredient.id)}/>
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>

@@ -1,5 +1,8 @@
 const sdk = require('./api/src')
+
+const recipeDoseApi = new sdk.RecipeDoseControllerApi()
 const recipeApi = new sdk.RecipeControllerApi()
+const ingredientApi = new sdk.IngredientControllerApi()
 
 const moment = require('moment')
 
@@ -7,6 +10,12 @@ const store = require('./store')
 
 module.exports = {
 
+    getIngredienti: () => {
+        return ingredientApi.ingredientControllerFind()
+    },
+    addIngredienteRicetta: (recipeId, ingredientId) => {
+        return recipeDoseApi.recipeDoseControllerCreate(recipeId, { newDoseInRecipe: {ingredientId, qty: 0} })
+    },
     getRicette: () => {
         return recipeApi.recipeControllerFind()
     },
