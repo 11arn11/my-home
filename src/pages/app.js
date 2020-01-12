@@ -17,6 +17,7 @@ export default () => {
         <Ricette path="/app/ricette"/>
         <Ricetta path="/app/ricetta/:id"/>
         <RicettaEdit path="/app/ricetta/:id/edit"/>
+        <RicettaEdit path="/app/ricetta/add"/>
       </Router>
   )
 }

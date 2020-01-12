@@ -1,5 +1,5 @@
 const sdk = require('./api/src')
-const client = new sdk.RecipeControllerApi()
+const recipeApi = new sdk.RecipeControllerApi()
 
 const moment = require('moment')
 
@@ -8,7 +8,7 @@ const store = require('./store')
 module.exports = {
 
     getRicette: () => {
-        return client.recipeControllerFind()
+        return recipeApi.recipeControllerFind()
     },
     getRicetta: (id) => {
         const opts = {
@@ -23,7 +23,14 @@ module.exports = {
                 ],
               })
         }
-        return client.recipeControllerFindById(id, opts)
+        return recipeApi.recipeControllerFindById(id, opts)
+    },
+    saveRicetta: (id, {name, main, secondary}) => {
+        if (id) {
+            return recipeApi.recipeControllerUpdateById(id, { recipePartial: { name, main, secondary } })
+        } else {
+            return recipeApi.recipeControllerCreate({ newRecipe: {name, main, secondary} })
+        }
     },
 
     getListaSpesa: () => {

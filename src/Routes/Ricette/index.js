@@ -45,6 +45,17 @@ export default () => {
     // Filtro Ricerca ingredienti
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+
+    const handleAdd = () => {
+        navigate(`/app/ricetta/add`)
+    }
+    const handleEdit = (id) => {
+        navigate(`/app/ricetta/${id}/edit`)
+    }
+    const handleView = (id) => {
+        navigate(`/app/ricetta/${id}`)
+    }
+
     useEffect(() => {
         model.getRicette().then(items => {
             const results = items.filter(item => {            
@@ -55,17 +66,7 @@ export default () => {
             });
             setSearchResults(results);    
         })
-    }, []);
-
-    const handleAdd = () => {
-        alert('Aggiungi ricetta')
-    }
-    const handleEdit = (id) => {
-        navigate(`/app/ricetta/${id}/edit`)
-    }
-    const handleView = (id) => {
-        navigate(`/app/ricetta/${id}`)
-    }
+    }, [searchTerm]);
 
     return (
         <Page title="Ricette">
@@ -77,13 +78,13 @@ export default () => {
                 onChange={e => setSearchTerm(e.target.value)}
             />
             <List className={classes.List}>
-                {searchResults.map(({id, main, secondary}) => {
+                {searchResults.map(({id, name, main, secondary}) => {
                     return(
                         <ListItem button 
                             key={id}
                             onClick={e => handleView(id)}
                         >
-                            <ListItemText primary={main} secondary={secondary}/>
+                            <ListItemText primary={name} secondary={`${main}, ${secondary}`}/>
                             <ListItemSecondaryAction>
                                 <EditIcon onClick={e => handleEdit(id)}/>
                             </ListItemSecondaryAction>
