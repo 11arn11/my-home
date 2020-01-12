@@ -73,7 +73,6 @@ export default () => {
         {model.getMenuSettimana().map(giorno => {
           const pranzo = model.getPastoProgrammato(giorno,'pranzo')
           const cena = model.getPastoProgrammato(giorno,'cena')
-          console.log(pranzo)
           return (
             <Element
               key={giorno}

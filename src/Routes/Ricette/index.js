@@ -43,18 +43,19 @@ export default () => {
     const classes = useStyles()
 
     // Filtro Ricerca ingredienti
-    const items = Object.entries(model.getRicette())
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     useEffect(() => {
-        const results = items.filter(item => {            
-            const searchKey = searchTerm.toLowerCase()
-            const main = item[1].main || ''
-            const secondary = item[1].secondary || ''
-            return main.toLowerCase().includes(searchKey) || secondary.toLowerCase().includes(searchKey)
-        });
-        setSearchResults(results);
-    }, [searchTerm]);
+        model.getRicette().then(items => {
+            const results = items.filter(item => {            
+                const searchKey = searchTerm.toLowerCase()
+                const main = item.main || ''
+                const secondary = item.secondary || ''
+                return main.toLowerCase().includes(searchKey) || secondary.toLowerCase().includes(searchKey)
+            });
+            setSearchResults(results);    
+        })
+    }, []);
 
     const handleAdd = () => {
         alert('Aggiungi ricetta')
@@ -76,15 +77,13 @@ export default () => {
                 onChange={e => setSearchTerm(e.target.value)}
             />
             <List className={classes.List}>
-                {searchResults.map(item => {
-                    const id = item[0]
-                    const pasto = item[1]
+                {searchResults.map(({id, main, secondary}) => {
                     return(
                         <ListItem button 
                             key={id}
                             onClick={e => handleView(id)}
                         >
-                            <ListItemText primary={pasto.main} secondary={pasto.secondary}/>
+                            <ListItemText primary={main} secondary={secondary}/>
                             <ListItemSecondaryAction>
                                 <EditIcon onClick={handleEdit}/>
                             </ListItemSecondaryAction>

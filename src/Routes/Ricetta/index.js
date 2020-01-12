@@ -1,26 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Page from '../../components/Page'
 
 import model from '../../model'
 
 export default ({id}) => {
-    const {main, secondary, ingredients} = model.getRicetta(id)
+
+    const [title, setTitle] = useState()
+    const [main, setMain] = useState()
+    const [secondary, setSecondary] = useState()
+    const [doses, setDoses] = useState([])
+
+    useEffect(() => {
+        model.getRicetta(id).then(item => {
+            setTitle(item.title)
+            setMain(item.main)
+            setSecondary(item.secondary)
+            setDoses(item.doses)
+        })
+    }, [])
+
     return (
-        <Page>
+        <Page title={title}>
             <h1>{main}</h1>
             <h2>{secondary}</h2>
             <ul>
                 {
-                    ingredients
+                    doses
                     ? 
-                        Object.entries(ingredients).map(item => {
-                            const id = item[0]
-                            const ingrediente = model.getIngrediente(id).name
-                            const qta = item[1]
+                        doses.map(({id, qty, ingredient}) => {
                             return (
                                 <li key={id}>
-                                    {ingrediente}: {qta}
+                                    {ingredient.name}: {qty}
                                 </li>
                             )
                         })

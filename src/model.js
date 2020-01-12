@@ -1,14 +1,29 @@
+const sdk = require('./api/src')
+const client = new sdk.RecipeControllerApi()
+
 const moment = require('moment')
 
 const store = require('./store')
 
 module.exports = {
 
-    getRicette: ()=>{
-        return store.ricette
+    getRicette: () => {
+        return client.recipeControllerFind()
     },
-    getRicetta: (id)=>{
-        return store.ricette[id]
+    getRicetta: (id) => {
+        const opts = {
+            filter: JSON.stringify({
+                include: [
+                  {
+                    relation: 'doses',
+                    scope: {
+                      include: [{relation: 'ingredient'}],
+                    },
+                  },
+                ],
+              })
+        }
+        return client.recipeControllerFindById(id, opts)
     },
 
     getListaSpesa: () => {
