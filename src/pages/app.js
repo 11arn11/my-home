@@ -5,6 +5,7 @@ import Dispensa from "../Routes/Dispensa"
 import ListaSpesa from "../Routes/ListaSpesa"
 import Ricette from '../Routes/Ricette'
 import Ricetta from '../Routes/Ricetta'
+import RicettaEdit from '../Routes/RicettaEdit'
 
 export default () => {
   return (
@@ -15,6 +16,7 @@ export default () => {
         <ListaSpesa path="/app/lista-della-spesa/" />
         <Ricette path="/app/ricette"/>
         <Ricetta path="/app/ricetta/:id"/>
+        <RicettaEdit path="/app/ricetta/:id/edit"/>
       </Router>
   )
 }

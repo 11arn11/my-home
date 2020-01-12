@@ -6,14 +6,14 @@ import model from '../../model'
 
 export default ({id}) => {
 
-    const [title, setTitle] = useState()
+    const [name, setName] = useState()
     const [main, setMain] = useState()
     const [secondary, setSecondary] = useState()
     const [doses, setDoses] = useState([])
 
     useEffect(() => {
         model.getRicetta(id).then(item => {
-            setTitle(item.title)
+            setName(item.name)
             setMain(item.main)
             setSecondary(item.secondary)
             setDoses(item.doses)
@@ -21,7 +21,7 @@ export default ({id}) => {
     }, [])
 
     return (
-        <Page title={title}>
+        <Page title={name}>
             <h1>{main}</h1>
             <h2>{secondary}</h2>
             <ul>

@@ -60,8 +60,8 @@ export default () => {
     const handleAdd = () => {
         alert('Aggiungi ricetta')
     }
-    const handleEdit = () => {
-        alert('Modifica ricetta')
+    const handleEdit = (id) => {
+        navigate(`/app/ricetta/${id}/edit`)
     }
     const handleView = (id) => {
         navigate(`/app/ricetta/${id}`)
@@ -85,7 +85,7 @@ export default () => {
                         >
                             <ListItemText primary={main} secondary={secondary}/>
                             <ListItemSecondaryAction>
-                                <EditIcon onClick={handleEdit}/>
+                                <EditIcon onClick={e => handleEdit(id)}/>
                             </ListItemSecondaryAction>
                         </ListItem>
                     )}
