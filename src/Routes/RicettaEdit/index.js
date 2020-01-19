@@ -73,14 +73,12 @@ export default ({id = null}) => {
     }
 
     useEffect(() => {
-        console.log('useEffect', localId)
         if (localId) {
             model.getRicetta(localId)
                 .then(item => init(item))
         }
         model.getIngredienti()
             .then(items => {
-                console.log(items)
                 setIngredients(items)
             })
     }, [])

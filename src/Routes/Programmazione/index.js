@@ -24,9 +24,21 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
   const classes = useStyles()
+  const [currentDate, setCurrentDate] = useState()
+  const [currentOccasion, setCurrentOccasion] = useState()
   const [open, setOpen] = useState(false)
   const [openCercaRicetta, setOpenCercaRicetta] = useState(false)
   const [missingDialog, setMissingDialog] = useState()
+
+  const [programmazione, setProgrammazione] = useState([])
+  const [ricette, setRicette] = useState([])
+
+  const init = () => {
+    model.getProgrammazione().then(items => {
+      console.log(items)
+      setProgrammazione(items)
+    })
+  }
 
   // Vai a ricetta
   const handleClick = (id) => {
@@ -34,13 +46,27 @@ export default () => {
 }
 
   // Cerca ricetta
-  const handleClickAdd = () => {
+  const handleClickAdd = (date, occasion) => {
+    setCurrentDate(date)
+    setCurrentOccasion(occasion)
     setOpenCercaRicetta(true)
   }
-  const handleSelectRicetta = () => {
-    setOpenCercaRicetta(false)
+  const handleSelectRicetta = (recipeId) => {
+    console.log('handleSelectRicetta', currentDate, currentOccasion, recipeId)
+    model.addProgrammazione(currentDate, currentOccasion, recipeId)
+      .then(() => {
+        init()
+        handleCloseCercaRicetta()
+      })
+      .catch( (error) => {
+        console.log(error)
+        handleCloseCercaRicetta()
+        alert('An error occurred')
+      })
   }
   const handleCloseCercaRicetta = () => {
+    setCurrentDate()
+    setCurrentOccasion()
     setOpenCercaRicetta(false)
   }
 
@@ -52,7 +78,10 @@ export default () => {
   const handleCloseMissing = () => {
     setOpen(false)
   }
+
   useEffect(() => {
+    init()
+    model.getRicette().then(items => setRicette(items))
     const skipTo = model.getProssimoPastoProgrammato();
     scroller.scrollTo(skipTo, {
       duration: 1800,
@@ -60,7 +89,8 @@ export default () => {
       containerId: 'listaDispensa',
       smooth: 'easeInOutQuart'
     })
-  })
+
+  }, [])
   return (
     <Page
       title="Menu della settimana"
@@ -70,16 +100,14 @@ export default () => {
         className={classes.List} 
         subheader={<li />}
       >
-        {model.getMenuSettimana().map(giorno => {
-          const pranzo = model.getPastoProgrammato(giorno,'pranzo')
-          const cena = model.getPastoProgrammato(giorno,'cena')
+        {programmazione.map(({date, pranzo, cena}) => {
           return (
             <Element
-              key={giorno}
-              name={giorno}
+              key={date}
+              name={date}
             >
               <GiornoListItem
-                data={giorno}
+                data={date}
                 pranzo={pranzo}
                 cena={cena}
                 handleClick={handleClick}
@@ -99,7 +127,7 @@ export default () => {
         open={openCercaRicetta} 
         onClose={handleCloseCercaRicetta}
         onSelect={handleSelectRicetta}
-        ricette={model.getRicette()}
+        ricette={ricette}
       />
     </Page>
   );

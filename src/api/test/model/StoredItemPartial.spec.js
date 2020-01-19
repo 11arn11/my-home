@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new LoopBackApplication.RecipesIdInclude();
+    instance = new LoopBackApplication.StoredItemPartial();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,28 @@
       object[property] = value;
   }
 
-  describe('RecipesIdInclude', function() {
-    it('should create an instance of RecipesIdInclude', function() {
-      // uncomment below and update the code to test RecipesIdInclude
-      //var instane = new LoopBackApplication.RecipesIdInclude();
-      //expect(instance).to.be.a(LoopBackApplication.RecipesIdInclude);
+  describe('StoredItemPartial', function() {
+    it('should create an instance of StoredItemPartial', function() {
+      // uncomment below and update the code to test StoredItemPartial
+      //var instane = new LoopBackApplication.StoredItemPartial();
+      //expect(instance).to.be.a(LoopBackApplication.StoredItemPartial);
     });
 
-    it('should have the property relation (base name: "relation")', function() {
-      // uncomment below and update the code to test the property relation
-      //var instane = new LoopBackApplication.RecipesIdInclude();
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new LoopBackApplication.StoredItemPartial();
       //expect(instance).to.be();
     });
 
-    it('should have the property scope (base name: "scope")', function() {
-      // uncomment below and update the code to test the property scope
-      //var instane = new LoopBackApplication.RecipesIdInclude();
+    it('should have the property qty (base name: "qty")', function() {
+      // uncomment below and update the code to test the property qty
+      //var instane = new LoopBackApplication.StoredItemPartial();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ingredientId (base name: "ingredientId")', function() {
+      // uncomment below and update the code to test the property ingredientId
+      //var instane = new LoopBackApplication.StoredItemPartial();
       //expect(instance).to.be();
     });
 

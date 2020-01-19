@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({id_ricetta, main, secondary, status, missing, handleClick, handleClickMissing}) => {
+export default ({pasto: {recipe: {id, name, main, secondary, missing = [], status = false}}, handleClick, handleClickMissing}) => {
     const classes = useStyles();
     return (
         <ListItem 
             button 
             className={classes.ListItem}
-            onClick={e => handleClick(id_ricetta)}
+            onClick={e => handleClick(id)}
         >
             <ListItemAvatar>
                 <Avatar>
@@ -36,8 +36,8 @@ export default ({id_ricetta, main, secondary, status, missing, handleClick, hand
                 </Avatar>
             </ListItemAvatar>
             <ListItemText
-                primary={main}
-                secondary={secondary}
+                primary={name}
+                secondary={main + ', ' + secondary}
             />
             <ListItemSecondaryAction>
                 {status

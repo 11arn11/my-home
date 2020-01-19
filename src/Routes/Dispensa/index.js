@@ -41,42 +41,84 @@ export default () => {
 
     const classes = useStyles()
 
+    const [disabled, setDisabled] = useState([])
+    const [ingredienti, setIngredienti] = useState([])
+
     // Filtro Ricerca ingredienti
-    const dispensa = Object.entries(model.getDispensa())
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    useEffect(() => {
-        const results = dispensa.filter(ingrediente => {
-            const id = ingrediente[0]
-            const name = model.getIngrediente(id).name
-            return name.toLowerCase().includes(searchTerm.toLowerCase())
-        });
-        setSearchResults(results);
-    }, [searchTerm]);
 
     // Popup ingredienti
     const [open, setOpen] = useState(false)
     const [editMode, setEditMode] = useState(false)
-    const [dialogName, setDialogName] = useState()
-    const [dialogQta, setDialogQta] = useState()
-    const handleSave = () => {
-        setDialogName()
-        setDialogQta()
-        setEditMode(false)
-        setOpen(false)
+    const [editId, setEditId] = useState()
+    const [editName, setEditName] = useState()
+    const [editQty, setEditQty] = useState()
+    const [editIngredientId, setEditIngredientId] = useState()
+    
+    const init = () => {
+        model.getDispensa()
+            .then((items) => {
+                setDisabled(items.map(item => item.ingredientId));
+                const results = items.filter(({ingredient: {name}}) => {
+                    return name.toLowerCase().includes(searchTerm.toLowerCase())
+                });
+                setSearchResults(results);
+            })
     }
-    const handleAdd = () => {
-        setDialogName()
-        setDialogQta()
-        setEditMode(false)
-        setOpen(true)
+    const initDialog = () => {
+        setEditId()
+        setEditName()
+        setEditQty()
+        setEditIngredientId()
     }
-    const handleEdit = (ingredientId) => {
-        setDialogName(model.getIngrediente(ingredientId).name)
-        setDialogQta(model.getIngredienteDispensa(ingredientId))
+
+    // Modifica dispensa
+    const handleSaveEdit = (id, qty) => {
+        model.updateDispensa(id, qty)
+            .then(() => {
+                init()
+                setOpen(false)
+                initDialog()
+            }).catch((error) => {
+                console.log(error)
+                alert('An error occurred')
+            })
+    }
+    const handleOpenEdit = (id, name, qty) => {
+        initDialog()
         setEditMode(true)
+        setEditId(id)
+        setEditName(name)
+        setEditQty(qty)
         setOpen(true)
     }
+
+    // Aggiungi alla dispensa
+    const handleSaveAdd = (ingredientId, qty) => {
+        model.addDispensa(ingredientId, qty)
+            .then(() => {
+                init()
+                initDialog()
+                setOpen(false)
+            }).catch((error) => {
+                console.log(error)
+                alert('An error occurred')
+            })
+    }
+    const handleOpenAdd = () => {
+        initDialog()
+        setEditMode(false)
+        setOpen(true)
+    }
+
+    useEffect(() => {
+        init()
+        model.getIngredienti()
+            .then(items => {
+                setIngredienti(items)
+            })
+    }, [searchTerm]);
 
     return (
         <Page title="Dispensa">
@@ -88,16 +130,14 @@ export default () => {
                 onChange={e => setSearchTerm(e.target.value)}
             />
             <List className={classes.List}>
-                {searchResults.map(item => {
-                    const id = item[0]
-                    const qta = item[1]
-                    const name = model.getIngrediente(id).name
+                {searchResults.map(({id, ingredient: {name}, qty}) => {
+                    console.log('item', id, name, qty)
                     return(
                         <ListItem button 
                             key={id}
-                            onClick={e => handleEdit(id)}
+                            onClick={e => handleOpenEdit(id, name, qty)}
                         >
-                            <ListItemText primary={name} secondary={`${qta} g`}/>
+                            <ListItemText primary={name} secondary={`${qty} g`}/>
                         </ListItem>
                     )}
                 )}
@@ -106,19 +146,24 @@ export default () => {
                 color="primary" 
                 aria-label="add" 
                 className={classes.fabButton}
-                onClick={e => handleAdd()}
+                onClick={e => handleOpenAdd()}
             >
                 <AddIcon />
             </Fab>
-            <IngredienteDispensa 
+            <IngredienteDispensa
                 open={open} 
-                editMode={editMode} 
-                name={dialogName}
-                qta={dialogQta}
-                setName={setDialogName}
-                setQta={setDialogQta}
+                editMode={editMode}
+                ingredienti={ingredienti}
+                disabled={disabled}
+                id={editId}
+                name={editName}
+                qty={editQty}
+                setQty={setEditQty}
+                ingredientId={editIngredientId}
+                setIngredientId={setEditIngredientId}
                 onClose={e => setOpen(false)}
-                handleSave={handleSave}
+                handleSaveEdit={handleSaveEdit}
+                handleSaveAdd={handleSaveAdd}
             />
         </Page>
     )

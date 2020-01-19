@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new LoopBackApplication.RecipesIdScope();
+    instance = new LoopBackApplication.Filter4();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,46 +47,52 @@
       object[property] = value;
   }
 
-  describe('RecipesIdScope', function() {
-    it('should create an instance of RecipesIdScope', function() {
-      // uncomment below and update the code to test RecipesIdScope
-      //var instane = new LoopBackApplication.RecipesIdScope();
-      //expect(instance).to.be.a(LoopBackApplication.RecipesIdScope);
+  describe('Filter4', function() {
+    it('should create an instance of Filter4', function() {
+      // uncomment below and update the code to test Filter4
+      //var instane = new LoopBackApplication.Filter4();
+      //expect(instance).to.be.a(LoopBackApplication.Filter4);
     });
 
     it('should have the property where (base name: "where")', function() {
       // uncomment below and update the code to test the property where
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 
     it('should have the property fields (base name: "fields")', function() {
       // uncomment below and update the code to test the property fields
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 
     it('should have the property offset (base name: "offset")', function() {
       // uncomment below and update the code to test the property offset
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 
     it('should have the property limit (base name: "limit")', function() {
       // uncomment below and update the code to test the property limit
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 
     it('should have the property skip (base name: "skip")', function() {
       // uncomment below and update the code to test the property skip
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 
     it('should have the property order (base name: "order")', function() {
       // uncomment below and update the code to test the property order
-      //var instane = new LoopBackApplication.RecipesIdScope();
+      //var instane = new LoopBackApplication.Filter4();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property include (base name: "include")', function() {
+      // uncomment below and update the code to test the property include
+      //var instane = new LoopBackApplication.Filter4();
       //expect(instance).to.be();
     });
 

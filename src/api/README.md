@@ -127,6 +127,15 @@ Class | Method | HTTP request | Description
 *LoopBackApplication.IngredientControllerApi* | [**ingredientControllerReplaceById**](docs/IngredientControllerApi.md#ingredientControllerReplaceById) | **PUT** /ingredients/{id} | 
 *LoopBackApplication.IngredientControllerApi* | [**ingredientControllerUpdateAll**](docs/IngredientControllerApi.md#ingredientControllerUpdateAll) | **PATCH** /ingredients | 
 *LoopBackApplication.IngredientControllerApi* | [**ingredientControllerUpdateById**](docs/IngredientControllerApi.md#ingredientControllerUpdateById) | **PATCH** /ingredients/{id} | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerCount**](docs/MealControllerApi.md#mealControllerCount) | **GET** /meals/count | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerCreate**](docs/MealControllerApi.md#mealControllerCreate) | **POST** /meals | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerDeleteById**](docs/MealControllerApi.md#mealControllerDeleteById) | **DELETE** /meals/{id} | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerFind**](docs/MealControllerApi.md#mealControllerFind) | **GET** /meals | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerFindById**](docs/MealControllerApi.md#mealControllerFindById) | **GET** /meals/{id} | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerReplaceById**](docs/MealControllerApi.md#mealControllerReplaceById) | **PUT** /meals/{id} | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerUpdateAll**](docs/MealControllerApi.md#mealControllerUpdateAll) | **PATCH** /meals | 
+*LoopBackApplication.MealControllerApi* | [**mealControllerUpdateById**](docs/MealControllerApi.md#mealControllerUpdateById) | **PATCH** /meals/{id} | 
+*LoopBackApplication.MealRecipeControllerApi* | [**mealRecipeControllerGetRecipe**](docs/MealRecipeControllerApi.md#mealRecipeControllerGetRecipe) | **GET** /meals/{id}/recipe | 
 *LoopBackApplication.PingControllerApi* | [**pingControllerPing**](docs/PingControllerApi.md#pingControllerPing) | **GET** /ping | 
 *LoopBackApplication.RecipeControllerApi* | [**recipeControllerCount**](docs/RecipeControllerApi.md#recipeControllerCount) | **GET** /recipes/count | 
 *LoopBackApplication.RecipeControllerApi* | [**recipeControllerCreate**](docs/RecipeControllerApi.md#recipeControllerCreate) | **POST** /recipes | 
@@ -140,6 +149,15 @@ Class | Method | HTTP request | Description
 *LoopBackApplication.RecipeDoseControllerApi* | [**recipeDoseControllerDelete**](docs/RecipeDoseControllerApi.md#recipeDoseControllerDelete) | **DELETE** /recipes/{id}/doses | 
 *LoopBackApplication.RecipeDoseControllerApi* | [**recipeDoseControllerFind**](docs/RecipeDoseControllerApi.md#recipeDoseControllerFind) | **GET** /recipes/{id}/doses | 
 *LoopBackApplication.RecipeDoseControllerApi* | [**recipeDoseControllerPatch**](docs/RecipeDoseControllerApi.md#recipeDoseControllerPatch) | **PATCH** /recipes/{id}/doses | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerCount**](docs/StoredItemControllerApi.md#storedItemControllerCount) | **GET** /stored-items/count | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerCreate**](docs/StoredItemControllerApi.md#storedItemControllerCreate) | **POST** /stored-items | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerDeleteById**](docs/StoredItemControllerApi.md#storedItemControllerDeleteById) | **DELETE** /stored-items/{id} | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerFind**](docs/StoredItemControllerApi.md#storedItemControllerFind) | **GET** /stored-items | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerFindById**](docs/StoredItemControllerApi.md#storedItemControllerFindById) | **GET** /stored-items/{id} | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerReplaceById**](docs/StoredItemControllerApi.md#storedItemControllerReplaceById) | **PUT** /stored-items/{id} | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerUpdateAll**](docs/StoredItemControllerApi.md#storedItemControllerUpdateAll) | **PATCH** /stored-items | 
+*LoopBackApplication.StoredItemControllerApi* | [**storedItemControllerUpdateById**](docs/StoredItemControllerApi.md#storedItemControllerUpdateById) | **PATCH** /stored-items/{id} | 
+*LoopBackApplication.StoredItemIngredientControllerApi* | [**storedItemIngredientControllerGetIngredient**](docs/StoredItemIngredientControllerApi.md#storedItemIngredientControllerGetIngredient) | **GET** /stored-items/{id}/ingredient | 
 
 
 ## Documentation for Models
@@ -151,21 +169,35 @@ Class | Method | HTTP request | Description
  - [LoopBackApplication.Filter1](docs/Filter1.md)
  - [LoopBackApplication.Filter2](docs/Filter2.md)
  - [LoopBackApplication.Filter3](docs/Filter3.md)
+ - [LoopBackApplication.Filter4](docs/Filter4.md)
+ - [LoopBackApplication.Filter5](docs/Filter5.md)
+ - [LoopBackApplication.Filter6](docs/Filter6.md)
+ - [LoopBackApplication.Filter7](docs/Filter7.md)
  - [LoopBackApplication.Ingredient](docs/Ingredient.md)
  - [LoopBackApplication.IngredientPartial](docs/IngredientPartial.md)
  - [LoopBackApplication.IngredientWithRelations](docs/IngredientWithRelations.md)
  - [LoopBackApplication.IngredientsIdFields](docs/IngredientsIdFields.md)
  - [LoopBackApplication.InlineResponse200](docs/InlineResponse200.md)
  - [LoopBackApplication.LoopbackCount](docs/LoopbackCount.md)
+ - [LoopBackApplication.Meal](docs/Meal.md)
+ - [LoopBackApplication.MealPartial](docs/MealPartial.md)
+ - [LoopBackApplication.MealWithRelations](docs/MealWithRelations.md)
+ - [LoopBackApplication.MealsIdFields](docs/MealsIdFields.md)
+ - [LoopBackApplication.MealsIdInclude](docs/MealsIdInclude.md)
+ - [LoopBackApplication.MealsIdScope](docs/MealsIdScope.md)
  - [LoopBackApplication.NewDoseInRecipe](docs/NewDoseInRecipe.md)
  - [LoopBackApplication.NewIngredient](docs/NewIngredient.md)
+ - [LoopBackApplication.NewMeal](docs/NewMeal.md)
  - [LoopBackApplication.NewRecipe](docs/NewRecipe.md)
+ - [LoopBackApplication.NewStoredItem](docs/NewStoredItem.md)
  - [LoopBackApplication.Recipe](docs/Recipe.md)
  - [LoopBackApplication.RecipePartial](docs/RecipePartial.md)
  - [LoopBackApplication.RecipeWithRelations](docs/RecipeWithRelations.md)
  - [LoopBackApplication.RecipesIdFields](docs/RecipesIdFields.md)
- - [LoopBackApplication.RecipesIdInclude](docs/RecipesIdInclude.md)
- - [LoopBackApplication.RecipesIdScope](docs/RecipesIdScope.md)
+ - [LoopBackApplication.StoredItem](docs/StoredItem.md)
+ - [LoopBackApplication.StoredItemPartial](docs/StoredItemPartial.md)
+ - [LoopBackApplication.StoredItemWithRelations](docs/StoredItemWithRelations.md)
+ - [LoopBackApplication.StoredItemsIdFields](docs/StoredItemsIdFields.md)
 
 
 ## Documentation for Authorization

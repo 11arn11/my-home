@@ -18,7 +18,7 @@ export default ({id}) => {
             setSecondary(item.secondary)
             setDoses(item.doses)
         })
-    }, [])
+    }, [id])
 
     return (
         <Page title={name}>

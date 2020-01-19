@@ -12,8 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
-import RecipesIdFields from './RecipesIdFields';
-import RecipesIdInclude from './RecipesIdInclude';
+import MealsIdFields from './MealsIdFields';
+import MealsIdInclude from './MealsIdInclude';
 
 /**
  * The Filter2 model module.
@@ -53,7 +53,7 @@ class Filter2 {
                 obj['where'] = ApiClient.convertToType(data['where'], {'String': Object});
             }
             if (data.hasOwnProperty('fields')) {
-                obj['fields'] = RecipesIdFields.constructFromObject(data['fields']);
+                obj['fields'] = MealsIdFields.constructFromObject(data['fields']);
             }
             if (data.hasOwnProperty('offset')) {
                 obj['offset'] = ApiClient.convertToType(data['offset'], 'Number');
@@ -68,7 +68,7 @@ class Filter2 {
                 obj['order'] = ApiClient.convertToType(data['order'], ['String']);
             }
             if (data.hasOwnProperty('include')) {
-                obj['include'] = ApiClient.convertToType(data['include'], [RecipesIdInclude]);
+                obj['include'] = ApiClient.convertToType(data['include'], [MealsIdInclude]);
             }
         }
         return obj;
@@ -83,7 +83,7 @@ class Filter2 {
 Filter2.prototype['where'] = undefined;
 
 /**
- * @member {module:model/RecipesIdFields} fields
+ * @member {module:model/MealsIdFields} fields
  */
 Filter2.prototype['fields'] = undefined;
 
@@ -108,7 +108,7 @@ Filter2.prototype['skip'] = undefined;
 Filter2.prototype['order'] = undefined;
 
 /**
- * @member {Array.<module:model/RecipesIdInclude>} include
+ * @member {Array.<module:model/MealsIdInclude>} include
  */
 Filter2.prototype['include'] = undefined;
 

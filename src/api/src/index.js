@@ -20,26 +20,44 @@ import Filter from './model/Filter';
 import Filter1 from './model/Filter1';
 import Filter2 from './model/Filter2';
 import Filter3 from './model/Filter3';
+import Filter4 from './model/Filter4';
+import Filter5 from './model/Filter5';
+import Filter6 from './model/Filter6';
+import Filter7 from './model/Filter7';
 import Ingredient from './model/Ingredient';
 import IngredientPartial from './model/IngredientPartial';
 import IngredientWithRelations from './model/IngredientWithRelations';
 import IngredientsIdFields from './model/IngredientsIdFields';
 import InlineResponse200 from './model/InlineResponse200';
 import LoopbackCount from './model/LoopbackCount';
+import Meal from './model/Meal';
+import MealPartial from './model/MealPartial';
+import MealWithRelations from './model/MealWithRelations';
+import MealsIdFields from './model/MealsIdFields';
+import MealsIdInclude from './model/MealsIdInclude';
+import MealsIdScope from './model/MealsIdScope';
 import NewDoseInRecipe from './model/NewDoseInRecipe';
 import NewIngredient from './model/NewIngredient';
+import NewMeal from './model/NewMeal';
 import NewRecipe from './model/NewRecipe';
+import NewStoredItem from './model/NewStoredItem';
 import Recipe from './model/Recipe';
 import RecipePartial from './model/RecipePartial';
 import RecipeWithRelations from './model/RecipeWithRelations';
 import RecipesIdFields from './model/RecipesIdFields';
-import RecipesIdInclude from './model/RecipesIdInclude';
-import RecipesIdScope from './model/RecipesIdScope';
+import StoredItem from './model/StoredItem';
+import StoredItemPartial from './model/StoredItemPartial';
+import StoredItemWithRelations from './model/StoredItemWithRelations';
+import StoredItemsIdFields from './model/StoredItemsIdFields';
 import DoseIngredientControllerApi from './api/DoseIngredientControllerApi';
 import IngredientControllerApi from './api/IngredientControllerApi';
+import MealControllerApi from './api/MealControllerApi';
+import MealRecipeControllerApi from './api/MealRecipeControllerApi';
 import PingControllerApi from './api/PingControllerApi';
 import RecipeControllerApi from './api/RecipeControllerApi';
 import RecipeDoseControllerApi from './api/RecipeDoseControllerApi';
+import StoredItemControllerApi from './api/StoredItemControllerApi';
+import StoredItemIngredientControllerApi from './api/StoredItemIngredientControllerApi';
 
 
 /**
@@ -123,6 +141,30 @@ export {
     Filter3,
 
     /**
+     * The Filter4 model constructor.
+     * @property {module:model/Filter4}
+     */
+    Filter4,
+
+    /**
+     * The Filter5 model constructor.
+     * @property {module:model/Filter5}
+     */
+    Filter5,
+
+    /**
+     * The Filter6 model constructor.
+     * @property {module:model/Filter6}
+     */
+    Filter6,
+
+    /**
+     * The Filter7 model constructor.
+     * @property {module:model/Filter7}
+     */
+    Filter7,
+
+    /**
      * The Ingredient model constructor.
      * @property {module:model/Ingredient}
      */
@@ -159,6 +201,42 @@ export {
     LoopbackCount,
 
     /**
+     * The Meal model constructor.
+     * @property {module:model/Meal}
+     */
+    Meal,
+
+    /**
+     * The MealPartial model constructor.
+     * @property {module:model/MealPartial}
+     */
+    MealPartial,
+
+    /**
+     * The MealWithRelations model constructor.
+     * @property {module:model/MealWithRelations}
+     */
+    MealWithRelations,
+
+    /**
+     * The MealsIdFields model constructor.
+     * @property {module:model/MealsIdFields}
+     */
+    MealsIdFields,
+
+    /**
+     * The MealsIdInclude model constructor.
+     * @property {module:model/MealsIdInclude}
+     */
+    MealsIdInclude,
+
+    /**
+     * The MealsIdScope model constructor.
+     * @property {module:model/MealsIdScope}
+     */
+    MealsIdScope,
+
+    /**
      * The NewDoseInRecipe model constructor.
      * @property {module:model/NewDoseInRecipe}
      */
@@ -171,10 +249,22 @@ export {
     NewIngredient,
 
     /**
+     * The NewMeal model constructor.
+     * @property {module:model/NewMeal}
+     */
+    NewMeal,
+
+    /**
      * The NewRecipe model constructor.
      * @property {module:model/NewRecipe}
      */
     NewRecipe,
+
+    /**
+     * The NewStoredItem model constructor.
+     * @property {module:model/NewStoredItem}
+     */
+    NewStoredItem,
 
     /**
      * The Recipe model constructor.
@@ -201,16 +291,28 @@ export {
     RecipesIdFields,
 
     /**
-     * The RecipesIdInclude model constructor.
-     * @property {module:model/RecipesIdInclude}
+     * The StoredItem model constructor.
+     * @property {module:model/StoredItem}
      */
-    RecipesIdInclude,
+    StoredItem,
 
     /**
-     * The RecipesIdScope model constructor.
-     * @property {module:model/RecipesIdScope}
+     * The StoredItemPartial model constructor.
+     * @property {module:model/StoredItemPartial}
      */
-    RecipesIdScope,
+    StoredItemPartial,
+
+    /**
+     * The StoredItemWithRelations model constructor.
+     * @property {module:model/StoredItemWithRelations}
+     */
+    StoredItemWithRelations,
+
+    /**
+     * The StoredItemsIdFields model constructor.
+     * @property {module:model/StoredItemsIdFields}
+     */
+    StoredItemsIdFields,
 
     /**
     * The DoseIngredientControllerApi service constructor.
@@ -223,6 +325,18 @@ export {
     * @property {module:api/IngredientControllerApi}
     */
     IngredientControllerApi,
+
+    /**
+    * The MealControllerApi service constructor.
+    * @property {module:api/MealControllerApi}
+    */
+    MealControllerApi,
+
+    /**
+    * The MealRecipeControllerApi service constructor.
+    * @property {module:api/MealRecipeControllerApi}
+    */
+    MealRecipeControllerApi,
 
     /**
     * The PingControllerApi service constructor.
@@ -240,5 +354,17 @@ export {
     * The RecipeDoseControllerApi service constructor.
     * @property {module:api/RecipeDoseControllerApi}
     */
-    RecipeDoseControllerApi
+    RecipeDoseControllerApi,
+
+    /**
+    * The StoredItemControllerApi service constructor.
+    * @property {module:api/StoredItemControllerApi}
+    */
+    StoredItemControllerApi,
+
+    /**
+    * The StoredItemIngredientControllerApi service constructor.
+    * @property {module:api/StoredItemIngredientControllerApi}
+    */
+    StoredItemIngredientControllerApi
 };

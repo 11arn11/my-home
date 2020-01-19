@@ -6,6 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { DialogContent, DialogContentText, Button, Grid } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField'
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles(theme => ({
     DialogTitle: {
@@ -14,16 +15,27 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({ 
-    open, editMode,
-    onClose, handleSave, 
-    name = '', qta = '', 
-    setName, setQta
+    editMode, open, ingredienti, disabled,
+    id, name, qty, ingredientId,
+    onClose, 
+    handleSaveEdit, handleSaveAdd, 
+    setIngredientId, setQty
 }) => {
+
     const classes = useStyles()
+
+    const save = () => {
+        if (editMode) {
+            handleSaveEdit(id, qty)
+        } else {
+            handleSaveAdd(ingredientId, qty)
+        }
+    }
+
     return (
         <Dialog open={open} onClose={onClose}>
             <DialogTitle className={classes.DialogTitle}>
-                { name ? 'Modifica' : 'Aggiungi' }
+                { editMode ? 'Modifica' : 'Aggiungi' }
             </DialogTitle>
             <DialogContent>
                 <Grid container 
@@ -33,31 +45,33 @@ export default ({
                     <Grid item xs={12}>
                         { !editMode 
                         ?
-                            <TextField required
-                                fullWidth={true}
-                                label="Nome ingrediente"
-                                onChange={e => setName(e.target.value)}
-                                helperText="inserisci il nome dell'ingrediente"
-                                value={name}
+                            <Autocomplete
+                                options={ingredienti}
+                                getOptionLabel={option => option.name + '('+option.id+')'}
+                                getOptionDisabled={option => disabled.includes(option.id)}
+                                onChange={(e, item) => setIngredientId(item.id)}
+                                renderInput={params => (
+                                    <TextField {...params} label="Ingrediente" variant="outlined" fullWidth />
+                                )}
                             />
                         : <DialogContentText>{name}</DialogContentText>
                         }
                     </Grid>
                     <Grid item xs={12}>
                         <TextField 
-                            label="grammi" 
                             type="number" 
+                            label="grammi" 
                             fullWidth={true}
                             helperText="inserisci il valore in grammi"
-                            value={qta}
-                            onChange={e => setQta(e.target.value)}
+                            value={qty}
+                            onChange={e => setQty(e.target.value)}
                         />
                     </Grid>
                     <Grid item>
                         <Button 
                             variant="contained" 
                             color="primary"
-                            onClick={handleSave}
+                            onClick={e => save()}
                         >
                             Salva
                         </Button>

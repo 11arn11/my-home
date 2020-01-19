@@ -12,21 +12,21 @@
  */
 
 import ApiClient from '../ApiClient';
-import RecipesIdScope from './RecipesIdScope';
+import MealsIdScope from './MealsIdScope';
 
 /**
- * The RecipesIdInclude model module.
- * @module model/RecipesIdInclude
+ * The MealsIdInclude model module.
+ * @module model/MealsIdInclude
  * @version 1.0.0
  */
-class RecipesIdInclude {
+class MealsIdInclude {
     /**
-     * Constructs a new <code>RecipesIdInclude</code>.
-     * @alias module:model/RecipesIdInclude
+     * Constructs a new <code>MealsIdInclude</code>.
+     * @alias module:model/MealsIdInclude
      */
     constructor() { 
         
-        RecipesIdInclude.initialize(this);
+        MealsIdInclude.initialize(this);
     }
 
     /**
@@ -38,21 +38,21 @@ class RecipesIdInclude {
     }
 
     /**
-     * Constructs a <code>RecipesIdInclude</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>MealsIdInclude</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipesIdInclude} obj Optional instance to populate.
-     * @return {module:model/RecipesIdInclude} The populated <code>RecipesIdInclude</code> instance.
+     * @param {module:model/MealsIdInclude} obj Optional instance to populate.
+     * @return {module:model/MealsIdInclude} The populated <code>MealsIdInclude</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new RecipesIdInclude();
+            obj = obj || new MealsIdInclude();
 
             if (data.hasOwnProperty('relation')) {
                 obj['relation'] = ApiClient.convertToType(data['relation'], 'String');
             }
             if (data.hasOwnProperty('scope')) {
-                obj['scope'] = RecipesIdScope.constructFromObject(data['scope']);
+                obj['scope'] = MealsIdScope.constructFromObject(data['scope']);
             }
         }
         return obj;
@@ -64,17 +64,17 @@ class RecipesIdInclude {
 /**
  * @member {String} relation
  */
-RecipesIdInclude.prototype['relation'] = undefined;
+MealsIdInclude.prototype['relation'] = undefined;
 
 /**
- * @member {module:model/RecipesIdScope} scope
+ * @member {module:model/MealsIdScope} scope
  */
-RecipesIdInclude.prototype['scope'] = undefined;
+MealsIdInclude.prototype['scope'] = undefined;
 
 
 
 
 
 
-export default RecipesIdInclude;
+export default MealsIdInclude;
 

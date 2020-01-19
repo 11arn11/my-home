@@ -1,10 +1,10 @@
-# LoopBackApplication.RecipesIdInclude
+# LoopBackApplication.MealsIdInclude
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relation** | **String** |  | [optional] 
-**scope** | [**RecipesIdScope**](RecipesIdScope.md) |  | [optional] 
+**scope** | [**MealsIdScope**](MealsIdScope.md) |  | [optional] 
 
 

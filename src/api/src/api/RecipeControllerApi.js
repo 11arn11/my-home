@@ -13,8 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
-import Filter2 from '../model/Filter2';
-import Filter3 from '../model/Filter3';
+import Filter4 from '../model/Filter4';
+import Filter5 from '../model/Filter5';
 import LoopbackCount from '../model/LoopbackCount';
 import NewRecipe from '../model/NewRecipe';
 import Recipe from '../model/Recipe';
@@ -172,7 +172,7 @@ export default class RecipeControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:model/Filter3} opts.filter 
+     * @param {module:model/Filter5} opts.filter 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/RecipeWithRelations>} and HTTP response
      */
     recipeControllerFindWithHttpInfo(opts) {
@@ -202,7 +202,7 @@ export default class RecipeControllerApi {
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:model/Filter3} opts.filter 
+     * @param {module:model/Filter5} opts.filter 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/RecipeWithRelations>}
      */
     recipeControllerFind(opts) {
@@ -216,7 +216,7 @@ export default class RecipeControllerApi {
     /**
      * @param {Number} id 
      * @param {Object} opts Optional parameters
-     * @param {module:model/Filter2} opts.filter 
+     * @param {module:model/Filter4} opts.filter 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/RecipeWithRelations} and HTTP response
      */
     recipeControllerFindByIdWithHttpInfo(id, opts) {
@@ -252,7 +252,7 @@ export default class RecipeControllerApi {
     /**
      * @param {Number} id 
      * @param {Object} opts Optional parameters
-     * @param {module:model/Filter2} opts.filter 
+     * @param {module:model/Filter4} opts.filter 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RecipeWithRelations}
      */
     recipeControllerFindById(id, opts) {

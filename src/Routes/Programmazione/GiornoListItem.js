@@ -37,14 +37,10 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                 <ListItem>
                     <List className={classes.List}>
                         {
-                            pranzo 
+                            pranzo.recipe 
                             ? 
                                 <PastoListItem
-                                    id_ricetta={pranzo.id_ricetta}
-                                    main={pranzo.main} 
-                                    secondary={pranzo.secondary} 
-                                    missing={pranzo.missing}
-                                    status={pranzo.status}
+                                    pasto={pranzo}
                                     handleClick={handleClick}
                                     handleClickMissing={handleClickMissing}
                                     key={`item-${data}-pranzo`}
@@ -52,18 +48,15 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                                 />
                             : 
                                 <EmptyListItem 
+                                    pasto={pranzo}
                                     handleClickAdd={handleClickAdd}
                                 />
                         }
                         {
-                            cena
+                            cena.recipe
                             ? 
                                 <PastoListItem 
-                                    id_ricetta={cena.id_ricetta}
-                                    main={cena.main} 
-                                    secondary={cena.secondary} 
-                                    missing={cena.missing}
-                                    status={cena.status}
+                                    pasto={cena}
                                     handleClick={handleClick}
                                     handleClickMissing={handleClickMissing}
                                     key={`item-${data}-cena`}
@@ -71,6 +64,7 @@ export default ({data, pranzo, cena, handleClick, handleClickAdd, handleClickMis
                                 />
                             : 
                                 <EmptyListItem 
+                                    pasto={cena}
                                     handleClickAdd={handleClickAdd}
                                 />
                         }

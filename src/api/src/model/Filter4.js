@@ -12,20 +12,22 @@
  */
 
 import ApiClient from '../ApiClient';
+import MealsIdInclude from './MealsIdInclude';
+import RecipesIdFields from './RecipesIdFields';
 
 /**
- * The RecipesIdScope model module.
- * @module model/RecipesIdScope
+ * The Filter4 model module.
+ * @module model/Filter4
  * @version 1.0.0
  */
-class RecipesIdScope {
+class Filter4 {
     /**
-     * Constructs a new <code>RecipesIdScope</code>.
-     * @alias module:model/RecipesIdScope
+     * Constructs a new <code>Filter4</code>.
+     * @alias module:model/Filter4
      */
     constructor() { 
         
-        RecipesIdScope.initialize(this);
+        Filter4.initialize(this);
     }
 
     /**
@@ -37,21 +39,21 @@ class RecipesIdScope {
     }
 
     /**
-     * Constructs a <code>RecipesIdScope</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>Filter4</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/RecipesIdScope} obj Optional instance to populate.
-     * @return {module:model/RecipesIdScope} The populated <code>RecipesIdScope</code> instance.
+     * @param {module:model/Filter4} obj Optional instance to populate.
+     * @return {module:model/Filter4} The populated <code>Filter4</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new RecipesIdScope();
+            obj = obj || new Filter4();
 
             if (data.hasOwnProperty('where')) {
                 obj['where'] = ApiClient.convertToType(data['where'], {'String': Object});
             }
             if (data.hasOwnProperty('fields')) {
-                obj['fields'] = ApiClient.convertToType(data['fields'], {'String': Object});
+                obj['fields'] = RecipesIdFields.constructFromObject(data['fields']);
             }
             if (data.hasOwnProperty('offset')) {
                 obj['offset'] = ApiClient.convertToType(data['offset'], 'Number');
@@ -65,6 +67,9 @@ class RecipesIdScope {
             if (data.hasOwnProperty('order')) {
                 obj['order'] = ApiClient.convertToType(data['order'], ['String']);
             }
+            if (data.hasOwnProperty('include')) {
+                obj['include'] = ApiClient.convertToType(data['include'], [MealsIdInclude]);
+            }
         }
         return obj;
     }
@@ -75,37 +80,42 @@ class RecipesIdScope {
 /**
  * @member {Object.<String, Object>} where
  */
-RecipesIdScope.prototype['where'] = undefined;
+Filter4.prototype['where'] = undefined;
 
 /**
- * @member {Object.<String, Object>} fields
+ * @member {module:model/RecipesIdFields} fields
  */
-RecipesIdScope.prototype['fields'] = undefined;
+Filter4.prototype['fields'] = undefined;
 
 /**
  * @member {Number} offset
  */
-RecipesIdScope.prototype['offset'] = undefined;
+Filter4.prototype['offset'] = undefined;
 
 /**
  * @member {Number} limit
  */
-RecipesIdScope.prototype['limit'] = undefined;
+Filter4.prototype['limit'] = undefined;
 
 /**
  * @member {Number} skip
  */
-RecipesIdScope.prototype['skip'] = undefined;
+Filter4.prototype['skip'] = undefined;
 
 /**
  * @member {Array.<String>} order
  */
-RecipesIdScope.prototype['order'] = undefined;
+Filter4.prototype['order'] = undefined;
+
+/**
+ * @member {Array.<module:model/MealsIdInclude>} include
+ */
+Filter4.prototype['include'] = undefined;
 
 
 
 
 
 
-export default RecipesIdScope;
+export default Filter4;
 

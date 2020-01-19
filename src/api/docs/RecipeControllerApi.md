@@ -158,7 +158,7 @@ import LoopBackApplication from 'loop_back_application';
 
 let apiInstance = new LoopBackApplication.RecipeControllerApi();
 let opts = {
-  'filter': new LoopBackApplication.Filter3() // Filter3 | 
+  'filter': new LoopBackApplication.Filter5() // Filter5 | 
 };
 apiInstance.recipeControllerFind(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -173,7 +173,7 @@ apiInstance.recipeControllerFind(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**Filter3**](.md)|  | [optional] 
+ **filter** | [**Filter5**](.md)|  | [optional] 
 
 ### Return type
 
@@ -203,7 +203,7 @@ import LoopBackApplication from 'loop_back_application';
 let apiInstance = new LoopBackApplication.RecipeControllerApi();
 let id = 3.4; // Number | 
 let opts = {
-  'filter': new LoopBackApplication.Filter2() // Filter2 | 
+  'filter': new LoopBackApplication.Filter4() // Filter4 | 
 };
 apiInstance.recipeControllerFindById(id, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -219,7 +219,7 @@ apiInstance.recipeControllerFindById(id, opts).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
- **filter** | [**Filter2**](.md)|  | [optional] 
+ **filter** | [**Filter4**](.md)|  | [optional] 
 
 ### Return type
 

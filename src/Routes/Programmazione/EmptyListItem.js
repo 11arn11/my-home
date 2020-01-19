@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({handleClickAdd}) => {
+export default ({pasto: {date, occasion}, handleClickAdd}) => {
     const classes = useStyles();
     return (
         <ListItem 
             button 
             className={classes.ListItem}
             alignItems="center"
-            onClick={e => handleClickAdd(e)}
+            onClick={e => handleClickAdd(date, occasion)}
             justify="center"
         >
             <Grid container justify="center">
