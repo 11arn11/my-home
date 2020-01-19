@@ -32,9 +32,9 @@ class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default http://localhost:3000
+         * @default https://api.devel.my-home.stage1.ogilvy.it
          */
-        this.basePath = 'http://localhost:3000'.replace(/\/+$/, '');
+        this.basePath = 'https://api.devel.my-home.stage1.ogilvy.it'.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
@@ -553,7 +553,7 @@ class ApiClient {
     hostSettings() {
         return [
             {
-              'url': "http://localhost:3000",
+              'url': "https://api.devel.my-home.stage1.ogilvy.it",
               'description': "No description provided",
             }
       ];

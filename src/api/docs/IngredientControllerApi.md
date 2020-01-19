@@ -1,6 +1,6 @@
 # LoopBackApplication.IngredientControllerApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://api.devel.my-home.stage1.ogilvy.it*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

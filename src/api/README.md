@@ -114,7 +114,7 @@ api.doseIngredientControllerGetIngredient(id).then(function(data) {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://api.devel.my-home.stage1.ogilvy.it*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
